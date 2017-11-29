@@ -8,10 +8,20 @@ export default class UserSearch extends Component {
 
         return (
             <TextInput
-                style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+                style={styles.input}
                 value={searchInput}
                 onChangeText={text => onChangeText(text)}
                 placeholder="Search for a GitHub user" />
         );
     }
 }
+
+const styles = StyleSheet.create({
+    input: {
+        alignSelf: 'stretch',
+        height: 40,
+        borderColor: 'gray',
+        borderWidth: 1,
+        paddingLeft: 5 
+    }
+});

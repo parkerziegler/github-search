@@ -9,7 +9,7 @@ export default class App extends React.Component {
   state = {
     loading: false,
     repos: [],
-    avatar: "https://avatars0.githubusercontent.com/u/19421190?s=50&v=4",
+    avatar: null,
     searchInput: ''
   }
 
@@ -24,7 +24,7 @@ export default class App extends React.Component {
     const query = `query {
       repositoryOwner(login: "${searchInput}") {
         url,
-        avatarUrl(size: 50),
+        avatarUrl(size: 100),
         repositories(first: 5) {
           nodes {
             name,
@@ -66,7 +66,7 @@ export default class App extends React.Component {
               style={{width: 50, height: 50}}
               source={{ uri: avatar }}/>
             : null}
-          {!loading ? <RepositoryList repos={repos} /> : null}
+          {!loading && repos.length ? <RepositoryList repos={repos} /> : null}
       </View>
     );
   }
@@ -78,6 +78,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    padding: 20
   },
   statusBarBackground: {
     height: (Platform.OS === 'ios') ? 20 : 0,
