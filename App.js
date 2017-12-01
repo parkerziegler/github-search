@@ -15,12 +15,15 @@ export default class App extends React.Component {
 
   onSubmitHandler = () => {
 
+    // destructure state
+    const { searchInput } = this.state;
+
+    // flag state as loading
     this.setState({
       loading: true
     });
 
-    const { searchInput } = this.state;
-
+    // format our GraphQL query
     const query = `query {
       repositoryOwner(login: "${searchInput}") {
         url,
@@ -34,7 +37,8 @@ export default class App extends React.Component {
       }
     }`;
 
-    // make the request to the GitHub GraphQL API
+    /* make the request to the GitHub GraphQL API. we'll store
+    the repos and user avatar in state. */
     fetch('https://api.github.com/graphql', {
       method: 'POST',
       body: JSON.stringify({ query }),
@@ -54,11 +58,23 @@ export default class App extends React.Component {
 
   render() {
 
+    // destructure state
     const { loading, repos, searchInput, avatar } = this.state;
 
     return (
       <View style={styles.container}>
           <View style={styles.statusBarBackground}></View>
+          <View style={styles.titleContainer}>
+            <Image
+              style={{ width: 100, height: 40 }}
+              source={require('./assets/GitHub_Logo.png')} />
+            <Text style={styles.title}>Search</Text>
+          </View>
+          {!repos.length
+          ? <Image
+              style={{ width: 100, height: 100, marginBottom: 20 }}
+              source={require('./assets/GitHub-Mark-120px-plus.png')}/>
+          : null}
           <UserSearch onChangeText={text => this.setState({ searchInput: text })} searchInput={searchInput} />
           <Button title="Search" onPress={this.onSubmitHandler}/>
           {!loading && avatar
@@ -83,5 +99,14 @@ const styles = StyleSheet.create({
   statusBarBackground: {
     height: (Platform.OS === 'ios') ? 20 : 0,
     backgroundColor: "white",
+  },
+  titleContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'flex-end'
+  },
+  title: {
+    fontSize: 28,
+    fontFamily: (Platform.OS === 'ios') ? "Avenir Next" : "Roboto"
   }
 });
