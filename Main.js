@@ -55,11 +55,11 @@ class Main extends React.Component {
     render() {
 
     // destructure props
-    const { loading, repos, searchInput, avatar } = this.props.search;
+   //  const { loading, repos, searchInput, avatar } = this.props.search;
 
     return (
         <View style={styles.container}>
-            <View style={styles.statusBarBackground}></View>
+            {/*<View style={styles.statusBarBackground}></View>
             <View style={styles.titleContainer}>
             <Image
                 style={{ width: 100, height: 40 }}
@@ -77,8 +77,8 @@ class Main extends React.Component {
             ? <Image
                 style={{width: 50, height: 50}}
                 source={{ uri: avatar }}/>
-            : null}
-            {!loading && repos.length ? <RepositoryList repos={repos} /> : null}
+            : null}*/}
+            <RepositoryList />
         </View>
     );
     }
