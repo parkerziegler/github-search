@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { FlatList, Text, StyleSheet } from 'react-native';
+import { connect } from 'react-redux';
 import Repository from './Repository';
-import { graphql } from 'react-apollo';
+import { graphql, compose } from 'react-apollo';
 import gql from 'graphql-tag';
 
 const query = gql`
-    query {
-        repositoryOwner(login: "parkerziegler") {
+    query repositoryOwner($login: String!) {
+        repositoryOwner(login: $login) {
             url,
             avatarUrl(size: 100),
             repositories(first: 5) {
@@ -21,7 +22,7 @@ const query = gql`
 class RepositoryList extends Component {
 
     renderItem = ({ item }) => {
-        return <Repository name={item.name} description={item.description} />;
+        return <Repository name={item.name} description={item.description} url={item.url} />;
     }
 
     render() {
@@ -36,5 +37,12 @@ class RepositoryList extends Component {
     }
 }
 
-export default graphql(query)(RepositoryList);
+const mapStateToProps = (state) => {
+
+    return {
+        search: state.searchReducer
+    };
+};
+
+export default connect(mapStateToProps)(graphql(query, { options: ({ search: { searchInput } }) => ({ variables: { login: searchInput }}) })(RepositoryList));
 
