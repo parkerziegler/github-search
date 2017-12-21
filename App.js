@@ -30,42 +30,12 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 });
 
-client.query({
-  query: gql`
-query {
-    repositoryOwner(login: "parkerziegler") {
-        url,
-        avatarUrl(size: 100),
-        repositories(first: 5) {
-            nodes {
-                name,
-                description
-            }
-        }
-    }
-}`}).then(response => console.log(response));
-
-
-// const searchInput = store.getState().searchReducer.searchInput;
-// const query = gql`query {
-//     repositoryOwner(login: "${searchInput}") {
-//         url,
-//         avatarUrl(size: 100),
-//         repositories(first: 5) {
-//             nodes {
-//                 name,
-//                 description
-//             }
-//         }
-//     }
-// }`;
-
 export default class App extends React.Component {
 
   render() {
 
     return (
-      <ApolloProvider client={client} store={store}>
+      <ApolloProvider client={client}>
           <Provider store={store}>
             <Main />
           </Provider>
