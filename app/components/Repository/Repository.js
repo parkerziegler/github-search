@@ -1,7 +1,15 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Button } from 'react-native';
+import { WebBrowser } from 'expo';
 
 export default class Repository extends React.Component {
+
+    handleTitlePress = async () => {
+
+        const { url } = this.props;
+
+        await WebBrowser.openBrowserAsync(url);
+    }
 
     render() {
 
@@ -9,7 +17,7 @@ export default class Repository extends React.Component {
 
         return (
             <View style={styles.repoContainer}>
-                <Text style={styles.repoName}>{name}</Text>
+                <Button style={styles.repoName} onPress={this.handleTitlePress} title={name}/>
                 <Text style={styles.repoDescription}>{description}</Text>
             </View>
         );
