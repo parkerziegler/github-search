@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { StyleSheet, Text, View, Button, Platform, Image } from 'react-native';
+import { StyleSheet, Text, View, Platform, Image, KeyboardAvoidingView } from 'react-native';
+import { Button } from 'react-native-elements';
 import UserSearch from './app/components/Search/UserSearch';
 import RepositoryList from './app/components/Repository/RepositoryList';
 import { token } from './config';
@@ -32,7 +33,7 @@ class Main extends React.Component {
         const { searchInput } = this.props.search;
         const { showResults } = this.state;
 
-        const search = <View style={styles.container}>
+        const search = <KeyboardAvoidingView style={styles.container} behavior="padding">
                 <View style={styles.statusBarBackground}></View>
                 <View style={styles.titleContainer}>
                     <Image
@@ -44,18 +45,18 @@ class Main extends React.Component {
                     style={{ width: 100, height: 100, marginBottom: 20 }}
                     source={require('./assets/GitHub-Mark-120px-plus.png')}/>
                 <UserSearch />
-                <Button title="Search" onPress={this.onSubmitHandler}/>
+                <Button small icon={{name: "search"}} title="Search" onPress={this.onSubmitHandler} backgroundColor="#000000" buttonStyle={styles.button} />
                 {/*{!loading && avatar
                 ? <Image
                     style={{width: 50, height: 50}}
                     source={{ uri: avatar }}/>
                 : null}}*/}
-            </View>;
+            </KeyboardAvoidingView>;
 
         const results = <View style={styles.container}>
                 <View style={styles.statusBarBackground}></View>
                 <RepositoryList />
-                <Button title="Back" onPress={this.onBackHandler}/>
+                <Button small icon={{name: "chevron-left"}} title="Back" onPress={this.onBackHandler} backgroundColor="#000000" style={styles.button} />
             </View>;
 
         return showResults ? results : search;
@@ -91,5 +92,10 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 28,
         fontFamily: (Platform.OS === 'ios') ? "Avenir Next" : "Roboto"
+    },
+    button: {
+        marginTop: 10,
+        paddingLeft: 20,
+        paddingRight: 20
     }
 });

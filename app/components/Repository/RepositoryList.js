@@ -13,7 +13,8 @@ const query = gql`
             repositories(first: 5) {
                 nodes {
                     name,
-                    description
+                    description,
+                    url
                 }
             }
         }
@@ -44,5 +45,8 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps)(graphql(query, { options: ({ search: { searchInput } }) => ({ variables: { login: searchInput }}) })(RepositoryList));
+export default compose(
+    connect(mapStateToProps),
+    graphql(query, { options: ({ search: { searchInput } }) => ({ variables: { login: searchInput }}) })
+)(RepositoryList);
 

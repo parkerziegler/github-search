@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, Text, StyleSheet, Platform } from 'react-native';
+import { Button } from 'react-native-elements';
 import { WebBrowser } from 'expo';
 
 export default class Repository extends React.Component {
@@ -13,11 +14,11 @@ export default class Repository extends React.Component {
 
     render() {
 
-        const { name, description } = this.props;
+        const { name, description, url } = this.props;
 
         return (
             <View style={styles.repoContainer}>
-                <Button style={styles.repoName} onPress={this.handleTitlePress} title={name}/>
+                <Button title={name} iconRight={{name: "call-made", color: "#000"}} small onPress={this.handleTitlePress} backgroundColor="#A1A1A1" textStyle={styles.repoName} buttonStyle={{alignSelf: 'flex-start'}} />
                 <Text style={styles.repoDescription}>{description}</Text>
             </View>
         );
@@ -27,12 +28,14 @@ export default class Repository extends React.Component {
 const styles = StyleSheet.create({
     repoContainer: {
         display: 'flex',
-        flexDirection: 'column',
-        flex: 1
+        flex: 1,
+        backgroundColor: 'red'
     },
     repoName: {
-        color: '#2BBEE0',
-        fontSize: 20
+        color: '#000000',
+        fontSize: 20,
+        fontFamily: (Platform.OS === 'ios') ? "Avenir Next" : "Roboto",
+        fontWeight: (Platform.OS === 'ios') ? "500" : "700"
     },
     repoDescription: {
         fontSize: 14

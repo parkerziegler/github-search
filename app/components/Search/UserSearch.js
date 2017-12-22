@@ -21,7 +21,8 @@ class UserSearch extends Component {
                 style={styles.input}
                 value={search.searchInput}
                 onChangeText={this.onChangeText}
-                placeholder="Search for a GitHub user" />
+                placeholder="Search for a GitHub user"
+                underlineColorAndroid="transparent" />
         );
     }
 }
