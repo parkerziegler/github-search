@@ -4,6 +4,8 @@ import { StyleSheet, Text, View, Platform, Image, KeyboardAvoidingView } from 'r
 import { Button } from 'react-native-elements';
 import UserSearch from './app/components/Search/UserSearch';
 import RepositoryList from './app/components/Repository/RepositoryList';
+import RepositoryOwner from './app/components/Repository/RepositoryOwner';
+import StatusBar from './app/constants/StatusBar';
 import { token } from './config';
 import { flagLoading, getRepos, getAvatar } from './app/actions/searchActions';
 
@@ -34,7 +36,7 @@ class Main extends React.Component {
         const { showResults } = this.state;
 
         const search = <KeyboardAvoidingView style={styles.container} behavior="padding">
-                <View style={styles.statusBarBackground}></View>
+                <StatusBar />
                 <View style={styles.titleContainer}>
                     <Image
                         style={{ width: 100, height: 40 }}
@@ -46,15 +48,11 @@ class Main extends React.Component {
                     source={require('./assets/GitHub-Mark-120px-plus.png')}/>
                 <UserSearch />
                 <Button small icon={{name: "search"}} title="Search" onPress={this.onSubmitHandler} backgroundColor="#000000" buttonStyle={styles.button} />
-                {/*{!loading && avatar
-                ? <Image
-                    style={{width: 50, height: 50}}
-                    source={{ uri: avatar }}/>
-                : null}}*/}
             </KeyboardAvoidingView>;
 
         const results = <View style={styles.container}>
-                <View style={styles.statusBarBackground}></View>
+                <StatusBar />
+                <RepositoryOwner />
                 <RepositoryList />
                 <Button small icon={{name: "chevron-left"}} title="Back" onPress={this.onBackHandler} backgroundColor="#000000" style={styles.button} />
             </View>;
