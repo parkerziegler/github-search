@@ -1,26 +1,12 @@
 import React, { Component } from 'react';
 import { FlatList, Text, StyleSheet } from 'react-native';
-import { connect } from 'react-redux';
 import Repository from './Repository';
-import { graphql, compose } from 'react-apollo';
-import gql from 'graphql-tag';
-
-const query = gql`
-    query repositoryOwner($login: String!) {
-        repositoryOwner(login: $login) {
-            url,
-            avatarUrl(size: 100),
-            repositories(first: 5) {
-                nodes {
-                    name,
-                    description,
-                    url
-                }
-            }
-        }
-    }`;
 
 class RepositoryList extends Component {
+
+    constructor(props) {
+        super(props);
+    }
 
     renderItem = ({ item }) => {
         return <Repository name={item.name} description={item.description} url={item.url} />;
@@ -28,25 +14,13 @@ class RepositoryList extends Component {
 
     render() {
 
-        const { repositoryOwner } = this.props.data;
-        const data = repositoryOwner ? repositoryOwner.repositories.nodes : [];
+        const { repos } = this.props;
 
         return (
-            <FlatList data={data}
+            <FlatList data={repos}
                 renderItem={(repo) => this.renderItem(repo)} keyExtractor={(item, index) => index} />
         );
     }
 }
 
-const mapStateToProps = (state) => {
-
-    return {
-        search: state.searchReducer
-    };
-};
-
-export default compose(
-    connect(mapStateToProps),
-    graphql(query, { options: ({ search: { searchInput } }) => ({ variables: { login: searchInput }}) })
-)(RepositoryList);
-
+export default RepositoryList;
