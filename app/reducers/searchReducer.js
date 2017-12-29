@@ -4,7 +4,8 @@ const initialState = {
     loading: true,
     repos: [],
     avatar: null,
-    searchInput: ''
+    searchInput: '',
+    showRepos: false
 };
 
 const searchReducer = (state = initialState, action) => {
@@ -28,6 +29,11 @@ const searchReducer = (state = initialState, action) => {
             return {
                 ...state,
                 avatar: action.avatar
+            };
+        case actions.TOGGLE_REPOS:
+            return {
+                ...state,
+                showRepos: action.showRepos
             };
         default:
             return state;

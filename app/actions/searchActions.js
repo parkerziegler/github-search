@@ -31,3 +31,11 @@ export function getAvatar(avatar) {
         avatar
     };
 }
+
+export function toggleRepos(showRepos) {
+
+    return {
+        type: actions.TOGGLE_REPOS,
+        showRepos
+    };
+}
