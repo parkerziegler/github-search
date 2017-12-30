@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { graphql, compose } from 'react-apollo';
 import gql from 'graphql-tag';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, ActivityIndicator } from 'react-native';
 import { Button } from 'react-native-elements';
 import StatusBar from '../../constants/StatusBar';
 import RepositoryOwner from '../Repository/RepositoryOwner';
@@ -21,6 +21,10 @@ const query = gql`
                     url
                 }
             }
+        },
+        user(login: $login) {
+            name,
+            login
         }
     }`;
 
@@ -39,16 +43,20 @@ class RepositoryScreen extends React.Component {
 
     render() {
 
-        const { data, loading, error } = this.props;
+        const { data, loading, error, navigation } = this.props;
 
         if (data.loading) {
-            return <Text>Loading...</Text>
+            return (
+                <View style={styles.container}>
+                    <ActivityIndicator size="large" color="#000" />
+                </View>
+            );
         }
 
         return (
             <View style={styles.container}>
                 <StatusBar />
-                {data.repositoryOwner && <RepositoryOwner url={data.repositoryOwner.url} avatarUrl={data.repositoryOwner.avatarUrl} />}
+                {data.repositoryOwner && <RepositoryOwner url={data.repositoryOwner.url} avatarUrl={data.repositoryOwner.avatarUrl} name={data.user.name} login={data.user.login} navigation={navigation} />}
                 {data.repositoryOwner && <RepositoryList repos={data.repositoryOwner.repositories.nodes} />}
                 <Button small icon={{name: "chevron-left"}} title="Back" onPress={this.onBackHandler} backgroundColor="#000000" style={styles.button} />
             </View>
