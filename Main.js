@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import SearchScreen from './app/components/Screens/SearchScreen';
 import RepositoryScreen from './app/components/Screens/RepositoryScreen';
+import RepositoryOwnerNavigator from './app/components/Navigation/RepositoryOwnerNavigator';
 
 class Main extends React.Component {
 
@@ -11,7 +12,7 @@ class Main extends React.Component {
         const { showRepos } = this.props.search;
 
         // check the showRepos flag in the reducer
-        return showRepos ? <RepositoryScreen /> : <SearchScreen />;
+        return showRepos ? <RepositoryOwnerNavigator /> : <SearchScreen />;
     }
 }
 
