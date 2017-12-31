@@ -1,26 +1,34 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Avatar } from 'react-native-elements';
-import { WebBrowser } from 'expo';
 
 const RepositoryOwner = (props) => {
 
-    const { url, avatarUrl, name, login, navigation } = props;
+    console.log(props);
 
-    const handleAvatarPress = () => {
-
-        // await WebBrowser.openBrowserAsync(url);
-        navigation.navigate('AuthorScreen');
-    };
+    const { 
+        url,
+        avatarUrl,
+        name,
+        login,
+        height,
+        width,
+        containerStyle,
+        flexDirection,
+        infoContainerStyle,
+        onAvatarPress
+    } = props;
 
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, { flexDirection }]}>
             <Avatar
-                large
+                height={height}
+                width={width}
                 rounded
                 source={{ uri: avatarUrl }}
-                onPress={handleAvatarPress} />
-            <View style={styles.infoContainer}>
+                containerStyle={containerStyle}
+                onPress={onAvatarPress} />
+            <View style={infoContainerStyle}>
                 <Text style={styles.name}>{name}</Text>
                 <Text style={styles.login}>{login}</Text>
             </View>
@@ -33,7 +41,6 @@ export default RepositoryOwner;
 const styles = StyleSheet.create({
     container: {
         display: 'flex',
-        flexDirection: 'row',
         alignItems: 'center'
     },
     infoContainer: {

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { graphql, compose } from 'react-apollo';
 import gql from 'graphql-tag';
-import { View, StyleSheet, Text, ActivityIndicator } from 'react-native';
+import { View, StyleSheet, Text, ActivityIndicator, TouchableOpacity } from 'react-native';
 import { Button } from 'react-native-elements';
 import StatusBar from '../../constants/StatusBar';
 import RepositoryOwner from '../Repository/RepositoryOwner';
@@ -43,7 +43,8 @@ class RepositoryScreen extends React.Component {
 
     render() {
 
-        const { data, loading, error, navigation } = this.props;
+        const { data, error, navigation } = this.props;
+
 
         if (data.loading) {
             return (
@@ -56,8 +57,18 @@ class RepositoryScreen extends React.Component {
         return (
             <View style={styles.container}>
                 <StatusBar />
-                {data.repositoryOwner && <RepositoryOwner url={data.repositoryOwner.url} avatarUrl={data.repositoryOwner.avatarUrl} name={data.user.name} login={data.user.login} navigation={navigation} />}
-                {data.repositoryOwner && <RepositoryList repos={data.repositoryOwner.repositories.nodes} />}
+                <RepositoryOwner
+                    url={data.repositoryOwner.url}
+                    avatarUrl={data.repositoryOwner.avatarUrl}
+                    name={data.user.name}
+                    login={data.user.login}
+                    height={75}
+                    width={75}
+                    containerStyle={null}
+                    flexDirection="row"
+                    infoContainerStyle={styles.infoContainer}
+                    onAvatarPress={() => navigation.navigate("AuthorScreen")} />
+                <RepositoryList repos={data.repositoryOwner.repositories.nodes} />
                 <Button small icon={{name: "chevron-left"}} title="Back" onPress={this.onBackHandler} backgroundColor="#000000" style={styles.button} />
             </View>
         );
@@ -83,6 +94,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         padding: 20
+    },
+    infoContainer: {
+        display: 'flex',
+        flex: 1,
+        marginLeft: 10,
+        justifyContent: 'center'
     },
     button: {
         marginTop: 10,
