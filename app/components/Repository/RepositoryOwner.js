@@ -4,8 +4,6 @@ import { Avatar } from 'react-native-elements';
 
 const RepositoryOwner = (props) => {
 
-    console.log(props);
-
     const { 
         url,
         avatarUrl,
