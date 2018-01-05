@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { graphql, compose } from 'react-apollo';
 import gql from 'graphql-tag';
 import RepositoryOwner from '../Repository/RepositoryOwner';
+import AuthorOverview from '../Author/AuthorOverview';
 import { WebBrowser } from 'expo';
 
 const query = gql`
@@ -17,6 +18,10 @@ const query = gql`
             location,
             createdAt,
             url,
+            websiteUrl,
+            repositories {
+                totalCount
+            },
             followers {
                 totalCount
             }
@@ -53,6 +58,8 @@ const AuthorScreen = (props) => {
                 flexDirection="column"
                 infoContainerStyle={styles.infoContainer}
                 onAvatarPress={openProfile} />
+            <Text style={styles.bio}>{data.user.bio}</Text>
+            <AuthorOverview company={data.user.company} location={data.user.location} url={data.user.url} followerCount={data.user.followers.totalCount} websiteUrl={data.user.websiteUrl} repoCount={data.user.repositories.totalCount} />
         </View>
     );
 };
@@ -74,12 +81,12 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
         alignItems: 'center',
-        justifyContent: 'center',
         padding: 20
     },
     infoContainer: {
         display: 'flex',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginBottom: 20
     },
     name: {
         color: '#000',
@@ -89,5 +96,10 @@ const styles = StyleSheet.create({
     login: {
         color: '#6C7680',
         fontSize: 18
+    },
+    bio: {
+        color: '#000',
+        fontSize: 18,
+        marginBottom: 20
     }
 });
