@@ -9,6 +9,7 @@ import { setContext } from 'apollo-link-context';
 import { ApolloProvider } from 'react-apollo';
 import { token } from './config';
 import gql from 'graphql-tag';
+import RepositoryOwnerNavigator from './app/components/Navigation/RepositoryOwnerNavigator';
 
 const httpLink = createHttpLink({
   uri: "https://api.github.com/graphql"
@@ -37,7 +38,7 @@ export default class App extends React.Component {
     return (
       <ApolloProvider client={client}>
           <Provider store={store}>
-            <Main />
+            <RepositoryOwnerNavigator />
           </Provider>
       </ApolloProvider>
     );

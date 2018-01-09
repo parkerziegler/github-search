@@ -8,11 +8,7 @@ class Main extends React.Component {
 
     render() {
 
-        // destructure props
-        const { showRepos } = this.props.search;
-
-        // check the showRepos flag in the reducer
-        return showRepos ? <RepositoryOwnerNavigator /> : <SearchScreen />;
+        return <RepositoryOwnerNavigator />;
     }
 }
 
