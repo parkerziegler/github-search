@@ -14,13 +14,18 @@ class SearchScreen extends React.Component {
 
     onSubmitHandler = () => {
 
-        const { dispatch } = this.props;
+        const { navigation } = this.props;
+        navigation.navigate("RepositoryScreen");
 
-        // dispatch an action to signal that the search has been submitted
-        dispatch(toggleRepos(true));
+        // const { dispatch } = this.props;
+
+        // // dispatch an action to signal that the search has been submitted
+        // dispatch(toggleRepos(true));
     }
 
     render() {
+
+        console.log(this.props);
 
         return (
             <KeyboardAvoidingView style={styles.container} behavior="padding">

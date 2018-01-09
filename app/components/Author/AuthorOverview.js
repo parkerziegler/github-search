@@ -3,6 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
 import EvilIcon from 'react-native-vector-icons/EvilIcons';
+import StatusBar from '../../constants/StatusBar';
 
 export default class AuthorOverview extends React.Component {
 

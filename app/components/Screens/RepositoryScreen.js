@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import { graphql, compose } from 'react-apollo';
 import gql from 'graphql-tag';
 import { View, StyleSheet, Text, ActivityIndicator, TouchableOpacity } from 'react-native';
-import { Button } from 'react-native-elements';
-import StatusBar from '../../constants/StatusBar';
 import RepositoryOwner from '../Repository/RepositoryOwner';
 import RepositoryList from '../Repository/RepositoryList';
 import { toggleRepos } from '../../actions/searchActions';
@@ -34,13 +32,6 @@ class RepositoryScreen extends React.Component {
         super(props);
     }
 
-    onBackHandler = () => {
-
-        const { dispatch } = this.props;
-
-        dispatch(toggleRepos(false));
-    }
-
     render() {
 
         const { data, error, navigation } = this.props;
@@ -56,7 +47,6 @@ class RepositoryScreen extends React.Component {
 
         return (
             <View style={styles.container}>
-                <StatusBar />
                 <RepositoryOwner
                     url={data.repositoryOwner.url}
                     avatarUrl={data.repositoryOwner.avatarUrl}
@@ -69,7 +59,6 @@ class RepositoryScreen extends React.Component {
                     infoContainerStyle={styles.infoContainer}
                     onAvatarPress={() => navigation.navigate("AuthorScreen")} />
                 <RepositoryList repos={data.repositoryOwner.repositories.nodes} />
-                <Button small icon={{name: "chevron-left"}} title="Back" onPress={this.onBackHandler} backgroundColor="#000000" style={styles.button} />
             </View>
         );
     }
