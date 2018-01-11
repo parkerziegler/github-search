@@ -5,7 +5,7 @@ const searchResolvers = {
     },
     resolvers: {
       Mutation: {
-        trackSearch: (_, search, { cache }) => {
+        trackSearch: (_, { search }, { cache }) => {
           
           const data = {
             __typename: "SearchInput",
