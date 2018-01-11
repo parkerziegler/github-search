@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { FlatList, Text, StyleSheet } from 'react-native';
-import Repository from './Repository';
+import RepositoryOverview from './RepositoryOverview';
 
-class RepositoryList extends Component {
+class RepositoryOverviewList extends Component {
 
     constructor(props) {
         super(props);
     }
 
     renderItem = ({ item }) => {
-        return <Repository name={item.name} description={item.description} url={item.url} />;
+        return <RepositoryOverview name={item.name} description={item.description} url={item.url} />;
     }
 
     render() {
@@ -23,4 +23,4 @@ class RepositoryList extends Component {
     }
 }
 
-export default RepositoryList;
+export default RepositoryOverviewList;

@@ -4,12 +4,12 @@ import { graphql, compose } from 'react-apollo';
 import gql from 'graphql-tag';
 import { View, StyleSheet, Text, ActivityIndicator, TouchableOpacity } from 'react-native';
 import RepositoryOwner from '../Repository/RepositoryOwner';
-import RepositoryList from '../Repository/RepositoryList';
+import RepositoryOverviewList from '../Repository/RepositoryOverviewList';
 import { toggleRepos } from '../../actions/searchActions';
 
 const query = gql`
-    query repositoryOwner($login: String!) {
-        repositoryOwner(login: $login) {
+    query repositoryOwner {
+        repositoryOwner(login: "parkerziegler") {
             url,
             avatarUrl(size: 100),
             repositories(first: 5) {
@@ -20,13 +20,13 @@ const query = gql`
                 }
             }
         },
-        user(login: $login) {
+        user(login: "parkerziegler") {
             name,
             login
         }
     }`;
 
-class RepositoryScreen extends React.Component {
+class RepositoryOverviewScreen extends React.Component {
 
     constructor(props) {
         super(props);
@@ -35,7 +35,6 @@ class RepositoryScreen extends React.Component {
     render() {
 
         const { data, error, navigation } = this.props;
-
 
         if (data.loading) {
             return (
@@ -58,23 +57,13 @@ class RepositoryScreen extends React.Component {
                     flexDirection="row"
                     infoContainerStyle={styles.infoContainer}
                     onAvatarPress={() => navigation.navigate("AuthorScreen")} />
-                <RepositoryList repos={data.repositoryOwner.repositories.nodes} />
+                <RepositoryOverviewList repos={data.repositoryOwner.repositories.nodes} />
             </View>
         );
     }
 }
 
-const mapStateToProps = (state) => {
-
-    return {
-        search: state.searchReducer
-    };
-};
-
-export default compose(
-    connect(mapStateToProps),
-    graphql(query, { options: ({ search: { searchInput } }) => ({ variables: { login: searchInput }}) })
-)(RepositoryScreen);
+export default graphql(query)(RepositoryOverviewScreen);
 
 const styles = StyleSheet.create({
     container: {

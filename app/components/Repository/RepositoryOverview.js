@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Platform } from 'react-native';
 import { Button } from 'react-native-elements';
 import { WebBrowser } from 'expo';
 
-export default class Repository extends React.Component {
+export default class RepositoryOverview extends React.Component {
 
     handleTitlePress = async () => {
 
