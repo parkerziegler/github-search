@@ -58,7 +58,7 @@ const AuthorScreen = (props) => {
                 flexDirection="column"
                 infoContainerStyle={styles.infoContainer}
                 onAvatarPress={openProfile} />
-            <Text style={styles.bio}>{data.user.bio}</Text>
+            {!!data.user.bio && <Text style={styles.bio}>{data.user.bio}</Text>}
             <AuthorOverview company={data.user.company} location={data.user.location} url={data.user.url} followerCount={data.user.followers.totalCount} websiteUrl={data.user.websiteUrl} repoCount={data.user.repositories.totalCount} />
         </View>
     );
