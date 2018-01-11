@@ -1,10 +1,15 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { KeyboardAvoidingView, View, Image, Text, StyleSheet, Platform } from 'react-native';
-import { Button } from 'react-native-elements';
+import { KeyboardAvoidingView, View, Image, Text, TextInput, StyleSheet, Platform, Keyboard } from 'react-native';
 import StatusBar from '../../constants/StatusBar';
-import UserSearch from '../Search/UserSearch';
-import { toggleRepos } from '../../actions/searchActions';
+import { Button } from 'react-native-elements';
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
+
+const TRACK_SEARCH = gql`
+    mutation trackSearch($search: String!) {
+        trackSearch(search: $search) @client
+    }
+`
 
 class SearchScreen extends React.Component {
 
@@ -14,19 +19,18 @@ class SearchScreen extends React.Component {
 
     onSubmitHandler = () => {
 
-        const { navigation } = this.props;
-        navigation.navigate("RepositoryScreen");
+        const { trackSearch, navigation } = this.props;
 
-        // const { dispatch } = this.props;
+        trackSearch();
 
-        // // dispatch an action to signal that the search has been submitted
-        // dispatch(toggleRepos(true));
+        // dismiss the keyboard and navigate to the next screen
+        Keyboard.dismiss();
+        navigation.navigate("RepositoryOverviewScreen");
     }
 
     render() {
 
         console.log(this.props);
-
         return (
             <KeyboardAvoidingView style={styles.container} behavior="padding">
                 <StatusBar />
@@ -39,14 +43,23 @@ class SearchScreen extends React.Component {
                 <Image
                     style={{ width: 100, height: 100, marginBottom: 20 }}
                     source={require('../../../assets/GitHub-Mark-120px-plus.png')}/>
-                <UserSearch />
+                <TextInput
+                    style={styles.input}
+                    ref={input => this.input = input}
+                    placeholder="Search for a GitHub user"
+                    underlineColorAndroid="transparent" />
                 <Button small icon={{name: "search"}} title="Search" onPress={this.onSubmitHandler} backgroundColor="#000000" buttonStyle={styles.button} />
             </KeyboardAvoidingView>
         );
     }
 }
 
-export default connect()(SearchScreen);
+export default graphql(TRACK_SEARCH, {
+    props: ({ ownProps: { navigation }, mutate }) => ({
+        navigation,
+        trackSearch: search => mutate({ variables: { search } }),
+    })
+})(SearchScreen);
 
 const styles = StyleSheet.create({
     container: {
@@ -69,5 +82,12 @@ const styles = StyleSheet.create({
         marginTop: 10,
         paddingLeft: 20,
         paddingRight: 20
+    },
+    input: {
+        alignSelf: 'stretch',
+        height: 40,
+        borderColor: 'gray',
+        borderWidth: 1,
+        paddingLeft: 5 
     }
 });

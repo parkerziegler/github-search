@@ -1,40 +1,33 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { TextInput, StyleSheet } from 'react-native';
-import { trackUserSearch } from '../../actions/searchActions';
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
+
+const TRACK_SEARCH = gql`
+    mutation trackSearch($search: String!) {
+        trackSearch(search: $search) @client
+    }
+`
 
 class UserSearch extends Component {
 
-    onChangeText = searchInput => {
-
-        const { dispatch } = this.props;
-
-        dispatch(trackUserSearch(searchInput));
-    }
-
     render() {
-
-        const { search } = this.props;
 
         return (
             <TextInput
                 style={styles.input}
-                value={search.searchInput}
-                onChangeText={this.onChangeText}
+                ref={input => this.input = input}
                 placeholder="Search for a GitHub user"
                 underlineColorAndroid="transparent" />
         );
     }
 }
 
-const mapStateToProps = (state) => {
-
-    return {
-        search: state.searchReducer
-    };
-};
-
-export default connect(mapStateToProps)(UserSearch);
+export default graphql(TRACK_SEARCH, {
+    props: ({ mutate }) => ({
+      trackSearch: search => mutate({ variables: { search } }),
+    })
+})(UserSearch);
 
 const styles = StyleSheet.create({
     input: {
