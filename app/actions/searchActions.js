@@ -7,35 +7,3 @@ export function trackUserSearch(searchInput) {
         searchInput
     };
 }
-
-export function flagLoading(loading) {
-
-    return {
-        type: actions.FLAG_LOADING,
-        loading
-    };
-}
-
-export function getRepos(repos) {
-
-    return {
-        type: actions.GET_REPOS,
-        repos
-    };
-}
-
-export function getAvatar(avatar) {
-
-    return {
-        type: actions.GET_AVATAR,
-        avatar
-    };
-}
-
-export function toggleRepos(showRepos) {
-
-    return {
-        type: actions.TOGGLE_REPOS,
-        showRepos
-    };
-}
