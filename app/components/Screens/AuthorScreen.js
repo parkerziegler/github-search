@@ -6,28 +6,8 @@ import gql from 'graphql-tag';
 import RepositoryOwner from '../Repository/RepositoryOwner';
 import AuthorOverview from '../Author/AuthorOverview';
 import { WebBrowser } from 'expo';
-
-const query = gql`
-    query ($login: String!){
-        user(login: $login) {
-            login,
-            name,
-            avatarUrl(size: 100)
-            bio,
-            company,
-            location,
-            createdAt,
-            url,
-            websiteUrl,
-            repositories {
-                totalCount
-            },
-            followers {
-                totalCount
-            }
-        }
-    }
-`;
+import getSearch from '../../graphql/getSearch';
+import getAuthor from '../../graphql/getAuthor';
 
 const AuthorScreen = (props) => {
 
@@ -64,16 +44,19 @@ const AuthorScreen = (props) => {
     );
 };
 
-const mapStateToProps = (state) => {
-
-    return {
-        search: state.searchReducer
-    };
-};
-
 export default compose(
-    connect(mapStateToProps),
-    graphql(query, { options: ({ search: { searchInput } }) => ({ variables: { login: searchInput }}) })
+    graphql(getSearch, {
+        props: ({ data: { search: { input }} }) => ({
+            input
+        })
+    }),
+    graphql(getAuthor, {
+        options: ({ input }) => ({
+            variables: {
+                login: input
+            }
+        })
+    })
 )(AuthorScreen);
 
 const styles = StyleSheet.create({
