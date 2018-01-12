@@ -1,40 +1,19 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { graphql, compose } from 'react-apollo';
 import gql from 'graphql-tag';
 import { View, StyleSheet, Text, ActivityIndicator, TouchableOpacity } from 'react-native';
 import RepositoryOwner from '../Repository/RepositoryOwner';
 import RepositoryOverviewList from '../Repository/RepositoryOverviewList';
 import { toggleRepos } from '../../actions/searchActions';
-
-const query = gql`
-    query repositoryOwner {
-        repositoryOwner(login: "parkerziegler") {
-            url,
-            avatarUrl(size: 100),
-            repositories(first: 5) {
-                nodes {
-                    name,
-                    description,
-                    url
-                }
-            }
-        },
-        user(login: "parkerziegler") {
-            name,
-            login
-        }
-    }`;
+import getRepositoryOverview from '../../graphql/getRepositoryOverview';
+import getSearch from '../../graphql/getSearch';
 
 class RepositoryOverviewScreen extends React.Component {
-
-    constructor(props) {
-        super(props);
-    }
 
     render() {
 
         const { data, error, navigation } = this.props;
+        console.log(this.props);
 
         if (data.loading) {
             return (
@@ -63,7 +42,20 @@ class RepositoryOverviewScreen extends React.Component {
     }
 }
 
-export default graphql(query)(RepositoryOverviewScreen);
+export default compose(
+    graphql(getSearch, {
+        props: ({ data: { search: { input }} }) => ({
+            input
+        })
+    }),
+    graphql(getRepositoryOverview, {
+        options: ({ input }) => ({
+            variables: {
+                login: input
+            }
+        })
+    })
+)(RepositoryOverviewScreen);
 
 const styles = StyleSheet.create({
     container: {

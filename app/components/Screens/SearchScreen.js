@@ -2,35 +2,31 @@ import React from 'react';
 import { KeyboardAvoidingView, View, Image, Text, TextInput, StyleSheet, Platform, Keyboard } from 'react-native';
 import StatusBar from '../../constants/StatusBar';
 import { Button } from 'react-native-elements';
-import { graphql } from 'react-apollo';
-import gql from 'graphql-tag';
-
-const TRACK_SEARCH = gql`
-    mutation trackSearch($search: String!) {
-        trackSearch(search: $search) @client
-    }
-`
+import { graphql, compose } from 'react-apollo';
+import getSearch from '../../graphql/getSearch';
+import trackSearch from '../../graphql/trackSearch';
 
 class SearchScreen extends React.Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     onSubmitHandler = () => {
 
-        const { trackSearch, navigation } = this.props;
-
-        trackSearch();
+        const { navigation } = this.props;
 
         // dismiss the keyboard and navigate to the next screen
         Keyboard.dismiss();
         navigation.navigate("RepositoryOverviewScreen");
     }
 
+    onChangeText = text => {
+
+        const { trackSearch } = this.props;
+        trackSearch(text);
+    }
+
     render() {
 
-        console.log(this.props);
+        const { input } = this.props;
+
         return (
             <KeyboardAvoidingView style={styles.container} behavior="padding">
                 <StatusBar />
@@ -45,7 +41,8 @@ class SearchScreen extends React.Component {
                     source={require('../../../assets/GitHub-Mark-120px-plus.png')}/>
                 <TextInput
                     style={styles.input}
-                    ref={input => this.input = input}
+                    onChangeText={this.onChangeText}
+                    value={input}
                     placeholder="Search for a GitHub user"
                     underlineColorAndroid="transparent" />
                 <Button small icon={{name: "search"}} title="Search" onPress={this.onSubmitHandler} backgroundColor="#000000" buttonStyle={styles.button} />
@@ -54,12 +51,18 @@ class SearchScreen extends React.Component {
     }
 }
 
-export default graphql(TRACK_SEARCH, {
-    props: ({ ownProps: { navigation }, mutate }) => ({
-        navigation,
-        trackSearch: search => mutate({ variables: { search } }),
-    })
-})(SearchScreen);
+export default compose(
+    graphql(getSearch, {
+        props: ({ data: { search: { input } } }) => ({
+            input
+        })
+    }),
+    graphql(trackSearch, {
+        props: ({ mutate }) => ({
+            trackSearch: input => mutate({ variables: { input } })
+        })
+    }),
+)(SearchScreen);
 
 const styles = StyleSheet.create({
     container: {
