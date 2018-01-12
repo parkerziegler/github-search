@@ -30,7 +30,7 @@ const authLink = setContext((_, { headers }) => {
 
 const cache = new InMemoryCache();
 
-const stateLink = withClientState({ searchResolvers, cache });
+const stateLink = withClientState({ ...searchResolvers, cache });
 
 const client = new ApolloClient({
   cache,  
