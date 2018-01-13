@@ -12,6 +12,8 @@ import { token } from './config';
 import gql from 'graphql-tag';
 import RootNavigator from './app/components/Navigation/RootNavigator';
 import searchResolvers from './app/resolvers/searchResolvers';
+import repositoryResolvers from './app/resolvers/repositoryResolvers';
+import { merge } from 'lodash';
 
 const httpLink = createHttpLink({
   uri: "https://api.github.com/graphql"
@@ -30,7 +32,7 @@ const authLink = setContext((_, { headers }) => {
 
 const cache = new InMemoryCache();
 
-const stateLink = withClientState({ ...searchResolvers, cache });
+const stateLink = withClientState({ ...merge(searchResolvers, repositoryResolvers), cache });
 
 const client = new ApolloClient({
   cache,  
