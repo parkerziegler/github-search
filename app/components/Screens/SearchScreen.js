@@ -19,8 +19,8 @@ class SearchScreen extends React.Component {
 
     onChangeText = text => {
 
-        const { trackSearch } = this.props;
-        trackSearch(text);
+        const { handleChange } = this.props;
+        handleChange(text);
     }
 
     render() {
@@ -59,7 +59,7 @@ export default compose(
     }),
     graphql(trackSearch, {
         props: ({ mutate }) => ({
-            trackSearch: input => mutate({ variables: { input } })
+            handleChange: input => mutate({ variables: { input } })
         })
     }),
 )(SearchScreen);

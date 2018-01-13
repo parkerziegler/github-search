@@ -13,7 +13,6 @@ class RepositoryOverviewScreen extends React.Component {
     render() {
 
         const { data, error, navigation } = this.props;
-        console.log(this.props);
 
         if (data.loading) {
             return (
@@ -36,7 +35,7 @@ class RepositoryOverviewScreen extends React.Component {
                     flexDirection="row"
                     infoContainerStyle={styles.infoContainer}
                     onAvatarPress={() => navigation.navigate("AuthorScreen")} />
-                <RepositoryOverviewList repos={data.repositoryOwner.repositories.nodes} />
+                <RepositoryOverviewList repos={data.repositoryOwner.repositories.nodes} navigation={navigation} />
             </View>
         );
     }

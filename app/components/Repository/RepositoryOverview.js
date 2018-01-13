@@ -2,14 +2,16 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, Platform } from 'react-native';
 import { Button } from 'react-native-elements';
 import { WebBrowser } from 'expo';
+import { graphql } from 'react-apollo';
+import trackRepositoryName from '../../graphql/trackRepositoryName';
 
-export default class RepositoryOverview extends React.Component {
+class RepositoryOverview extends React.Component {
 
-    handleTitlePress = async () => {
+    handleTitlePress = () => {
 
-        const { url } = this.props;
-
-        await WebBrowser.openBrowserAsync(url);
+        const { navigation, handlePress, name } = this.props;
+        handlePress(name);
+        navigation.navigate("RepositoryDetailScreen");
     }
 
     render() {
@@ -24,6 +26,12 @@ export default class RepositoryOverview extends React.Component {
         );
     }
 }
+
+export default graphql(trackRepositoryName, {
+    props: ({ mutate }) => ({
+        handlePress: name => mutate({ variables: { name }})
+    })
+})(RepositoryOverview);
 
 const styles = StyleSheet.create({
     repoContainer: {

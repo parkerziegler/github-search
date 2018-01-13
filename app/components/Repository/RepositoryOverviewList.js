@@ -4,12 +4,11 @@ import RepositoryOverview from './RepositoryOverview';
 
 class RepositoryOverviewList extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     renderItem = ({ item }) => {
-        return <RepositoryOverview name={item.name} description={item.description} url={item.url} />;
+
+        const { navigation } = this.props;
+
+        return <RepositoryOverview name={item.name} description={item.description} url={item.url} navigation={navigation} />;
     }
 
     render() {
