@@ -11,7 +11,6 @@ const searchResolvers = {
       Mutation: {
         trackSearch: (_, { input }, { cache }) => {
 
-            console.log("Input in resovler " + input);
             const query = getSearch;
 
             const previousState = cache.readQuery({ query });
@@ -19,11 +18,14 @@ const searchResolvers = {
             const data = {
                 ...previousState,
                 search: {
-                    input
+                    input,
+                    __typename: "SearchInput"
                 }
             };
 
             cache.writeData({ query, data });
+
+            return null;
           
         }
       }
