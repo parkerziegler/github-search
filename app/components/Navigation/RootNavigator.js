@@ -3,6 +3,7 @@ import { StackNavigator } from 'react-navigation';
 import SearchScreen from '../Screens/SearchScreen';
 import RepositoryOverviewScreen from '../Screens/RepositoryOverviewScreen';
 import AuthorScreen from '../Screens/AuthorScreen';
+import RepositoryDetailScreen from '../Screens/RepositoryDetailScreen';
 import { Constants } from 'expo';
 
 const headerStyle = {
@@ -35,6 +36,14 @@ const RootNavigator = StackNavigator({
             headerStyle,
             headerTintColor: '#fff',
             title: "Author"
+        })
+    },
+    RepositoryDetailScreen: {
+        screen: RepositoryDetailScreen,
+        navigationOptions: ({ navigation }) => ({
+            headerStyle,
+            headerTintColor: '#fff',
+            title: "Repository Details"
         })
     }
 }, {
