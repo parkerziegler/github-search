@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import AuthorItem from './AuthorItem';
+import LabeledIcon from '../Helpers/LabeledIcon';
 
 export default class AuthorOverview extends React.Component {
 
@@ -18,7 +18,7 @@ export default class AuthorOverview extends React.Component {
 
         return (
             <View style={styles.container}>
-                {data.map((item, index) => <AuthorItem {...item} key={index} />)}    
+                {data.map((item, index) => <LabeledIcon {...item} iconSize={40} key={index} />)}    
             </View>
         );
     }

@@ -3,14 +3,16 @@ import { View, Text, StyleSheet } from 'react-native';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
 import EvilIcon from 'react-native-vector-icons/EvilIcons';
+import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
-export default class AuthorItem extends React.Component {
+export default class LabeledIcon extends React.Component {
 
-    getIcon = (iconType, iconName) => {
+    getIcon = (iconType, iconName, iconSize) => {
 
         const props = {
             name: iconName,
-            size: 40,
+            size: iconSize,
             color: "#222"
         };
 
@@ -21,6 +23,8 @@ export default class AuthorItem extends React.Component {
                 return <EntypoIcon {...props} />;
             case 'evil':
                 return <EvilIcon {...props} />;
+            case 'font-awesome':
+                return <FontAwesome {...props} />;
             default:
                 return <MaterialIcon {...props} />;
         }
@@ -28,11 +32,11 @@ export default class AuthorItem extends React.Component {
 
     render() {
 
-        const { iconType, iconName, item } = this.props;
+        const { iconType, iconName, iconSize, item } = this.props;
 
         return (
             <View style={styles.itemContainer}>
-                {this.getIcon(iconType, iconName)}
+                {this.getIcon(iconType, iconName, iconSize)}
                 <Text style={styles.text}>{item}</Text>
             </View>
         );
@@ -48,7 +52,7 @@ const styles = StyleSheet.create({
     },
     text: {
         fontSize: 15,
-        color:'#000',
+        color:'#222',
         marginLeft: 10
     }
 });
