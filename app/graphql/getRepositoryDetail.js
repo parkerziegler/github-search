@@ -4,33 +4,37 @@ export default gql`
     query repository($owner: String!, $name: String!) {
         repository(owner: $owner, name: $name) {
             description,
-        createdAt,
-        pushedAt,
-        stargazers {
-            totalCount
-        }
-        primaryLanguage {
             name,
-            color
-        }
-        ref(qualifiedName: "master") {
-            target {
-                ... on Commit {
-                    id
-                    history(first: 5) {
-                        pageInfo {
-                            hasNextPage
-                        }
-                        edges {
-                            node {
-                                messageHeadline
-                                oid
-                                message
-                                    author {
-                                        name
-                                        email
-                                        date
-                                    }
+            createdAt,
+            pushedAt,
+            stargazers {
+                totalCount
+            },
+            forks {
+                totalCount
+            }
+            primaryLanguage {
+                name,
+                color
+            },
+            ref(qualifiedName: "master") {
+                target {
+                    ... on Commit {
+                        id
+                        history(first: 5) {
+                            pageInfo {
+                                hasNextPage
+                            }
+                            edges {
+                                node {
+                                    messageHeadline
+                                    oid
+                                    message
+                                        author {
+                                            name
+                                            email
+                                            date
+                                        }
                                 }
                             }
                         }

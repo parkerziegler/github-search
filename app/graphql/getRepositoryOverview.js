@@ -5,7 +5,7 @@ export default gql`
         repositoryOwner(login: $login) {
             url,
             avatarUrl(size: 100),
-            repositories(first: 5) {
+            repositories(last: 5) {
                 nodes {
                     name,
                     description,
