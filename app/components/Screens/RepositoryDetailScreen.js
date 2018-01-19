@@ -4,12 +4,13 @@ import { graphql, compose } from 'react-apollo';
 import getSearch from '../../graphql/getSearch';
 import getRepositoryName from '../../graphql/getRepositoryName';
 import getRepositoryDetail from '../../graphql/getRepositoryDetail';
+import LabeledIcon from '../Helpers/LabeledIcon';
 
 const RepositoryDetailScreen = (props) => {
 
-    console.log(props);
+    const { loading, repository, error } = props;
 
-    if (props.data.loading) {
+    if (loading) {
         return (
             <View style={styles.container}>
                 <ActivityIndicator size="large" color="#000" />
@@ -17,10 +18,30 @@ const RepositoryDetailScreen = (props) => {
         );
     }
 
+    console.log(repository);
+
     return (
         <View style={styles.container}>
-            <Text>{props.data.repository.description}</Text>
-            <Text>Me</Text>
+            <Text style={styles.repoName}>{repository.name}</Text>
+            <Text style={styles.description}>{repository.description}</Text>
+            <View style={styles.iconContainer}>
+                <LabeledIcon
+                    iconName="star"
+                    iconType="font-awesome"
+                    iconSize={30}
+                    item={`${repository.stargazers.totalCount} stars`}
+                />
+                <LabeledIcon
+                    iconName="code-fork"
+                    iconType="font-awesome"
+                    iconSize={30}
+                    item={`${repository.forks.totalCount} forks`}
+                />
+            </View>
+            <Text style={styles.repoName}>History</Text>
+            <View style={styles.commitContainer}>
+                {repository.ref.target.history.edges.map(({ node: { message, oid } }) => <Text key={oid}>{message}</Text>)}
+            </View>
         </View>
     );
 
@@ -43,6 +64,11 @@ export default compose(
                 owner: input,
                 name
             }
+        }),
+        props: ({ data: { loading, repository, error } }) => ({
+            loading,
+            repository,
+            error
         })
     })
 )(RepositoryDetailScreen);
@@ -54,5 +80,22 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         padding: 20
+    },
+    repoName: {
+        color: '#000',
+        fontSize: 25,
+        fontWeight: '700'
+    },
+    description: {
+        color: '#6C7680',
+        fontSize: 18
+    },
+    iconContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-around'
+    },
+    commitContainer: {
+        display: 'flex'
     }
 });
