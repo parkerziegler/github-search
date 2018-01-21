@@ -27,9 +27,9 @@ export default gql`
                             }
                             edges {
                                 node {
-                                    messageHeadline
                                     oid
                                     message
+                                    commitUrl
                                         author {
                                             name
                                             email

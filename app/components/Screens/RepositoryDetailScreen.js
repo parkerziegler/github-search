@@ -5,6 +5,7 @@ import getSearch from '../../graphql/getSearch';
 import getRepositoryName from '../../graphql/getRepositoryName';
 import getRepositoryDetail from '../../graphql/getRepositoryDetail';
 import LabeledIcon from '../Helpers/LabeledIcon';
+import CommitHistory from '../Repository/RepositoryDetails/CommitHistory';
 
 const RepositoryDetailScreen = (props) => {
 
@@ -22,25 +23,37 @@ const RepositoryDetailScreen = (props) => {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.repoName}>{repository.name}</Text>
-            <Text style={styles.description}>{repository.description}</Text>
-            <View style={styles.iconContainer}>
-                <LabeledIcon
-                    iconName="star"
-                    iconType="font-awesome"
-                    iconSize={30}
-                    item={`${repository.stargazers.totalCount} stars`}
-                />
-                <LabeledIcon
-                    iconName="code-fork"
-                    iconType="font-awesome"
-                    iconSize={30}
-                    item={`${repository.forks.totalCount} forks`}
-                />
+            <View style={styles.repoContainer}>
+                <Text style={styles.repoName}>{repository.name}</Text>
+                {repository.primaryLanguage &&
+                    <Text style={{
+                        fontSize: 21,
+                        fontWeight: '700',
+                        color: repository.primaryLanguage.color
+                    }}>
+                        {repository.primaryLanguage.name}
+                    </Text>}
+                <Text style={styles.description}>{repository.description}</Text>
+                <View style={styles.iconContainer}>
+                    <LabeledIcon
+                        iconName="star"
+                        iconType="font-awesome"
+                        iconSize={30}
+                        iconColor={"#222"}
+                        item={`${repository.stargazers.totalCount} stars`}
+                    />
+                    <LabeledIcon
+                        iconName="code-fork"
+                        iconType="font-awesome"
+                        iconSize={30}
+                        iconColor={"#222"}
+                        item={`${repository.forks.totalCount} forks`}
+                    />
+                </View>
             </View>
-            <Text style={styles.repoName}>History</Text>
-            <View style={styles.commitContainer}>
-                {repository.ref.target.history.edges.map(({ node: { message, oid } }) => <Text key={oid}>{message}</Text>)}
+            <View style={styles.historyContainer}>
+                <Text style={styles.repoName}>Commit History</Text>
+                <CommitHistory edges={repository.ref.target.history.edges} />
             </View>
         </View>
     );
@@ -81,10 +94,17 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         padding: 20
     },
+    repoContainer: {
+        display: 'flex',
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'space-around'
+    },
     repoName: {
         color: '#000',
         fontSize: 25,
-        fontWeight: '700'
+        fontWeight: '700',
+        margin: 5
     },
     description: {
         color: '#6C7680',
@@ -95,7 +115,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around'
     },
-    commitContainer: {
-        display: 'flex'
-    }
+    historyContainer: {
+        display: 'flex',
+        flex: 1
+    },
 });
