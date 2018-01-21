@@ -18,7 +18,7 @@ export default class AuthorOverview extends React.Component {
 
         return (
             <View style={styles.container}>
-                {data.map((item, index) => <LabeledIcon {...item} iconSize={40} key={index} />)}    
+                {data.map((item, index) => <LabeledIcon {...item} iconSize={40} color={"#222"} key={index} />)}    
             </View>
         );
     }

@@ -8,12 +8,12 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 export default class LabeledIcon extends React.Component {
 
-    getIcon = (iconType, iconName, iconSize) => {
+    getIcon = (iconType, iconName, iconSize, iconColor) => {
 
         const props = {
             name: iconName,
             size: iconSize,
-            color: "#222"
+            color: iconColor
         };
 
         switch (iconType) {
@@ -32,11 +32,11 @@ export default class LabeledIcon extends React.Component {
 
     render() {
 
-        const { iconType, iconName, iconSize, item } = this.props;
+        const { iconType, iconName, iconSize, iconColor, item } = this.props;
 
         return (
             <View style={styles.itemContainer}>
-                {this.getIcon(iconType, iconName, iconSize)}
+                {this.getIcon(iconType, iconName, iconSize, iconColor)}
                 <Text style={styles.text}>{item}</Text>
             </View>
         );
