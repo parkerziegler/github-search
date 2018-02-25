@@ -1,53 +1,60 @@
-import React from 'react';
 import { StackNavigator } from 'react-navigation';
 import SearchScreen from '../Screens/SearchScreen';
 import RepositoryOverviewScreen from '../Screens/RepositoryOverviewScreen';
 import AuthorScreen from '../Screens/AuthorScreen';
 import RepositoryDetailScreen from '../Screens/RepositoryDetailScreen';
+import ErrorScreen from '../Screens/ErrorScreen';
 import { Constants } from 'expo';
 
 const headerStyle = {
-    backgroundColor: '#222',
-    marginTop: Constants.statusBarHeight
+  backgroundColor: '#222',
+  marginTop: Constants.statusBarHeight,
 };
 
-const headerTitleStyle = {
-    color: '#fff'
-};
-
-const RootNavigator = StackNavigator({
+const RootNavigator = StackNavigator(
+  {
     SearchScreen: {
-        screen: SearchScreen,
-        navigationOptions: ({ navigation }) => ({
-            header: null,
-        })
+      screen: SearchScreen,
+      navigationOptions: () => ({
+        header: null,
+      }),
     },
     RepositoryOverviewScreen: {
-        screen: RepositoryOverviewScreen,
-        navigationOptions: ({ navigation }) => ({
-            headerStyle,
-            headerTintColor: '#fff',
-            title: "Respositories"
-        })
+      screen: RepositoryOverviewScreen,
+      navigationOptions: () => ({
+        headerStyle,
+        headerTintColor: '#fff',
+        title: 'Respositories',
+      }),
     },
     AuthorScreen: {
-        screen: AuthorScreen,
-        navigationOptions: ({ navigation }) => ({
-            headerStyle,
-            headerTintColor: '#fff',
-            title: "Author"
-        })
+      screen: AuthorScreen,
+      navigationOptions: () => ({
+        headerStyle,
+        headerTintColor: '#fff',
+        title: 'Author',
+      }),
     },
     RepositoryDetailScreen: {
-        screen: RepositoryDetailScreen,
-        navigationOptions: ({ navigation }) => ({
-            headerStyle,
-            headerTintColor: '#fff',
-            title: "Repository Details"
-        })
-    }
-}, {
-    initialRouteName: "SearchScreen"
-});
+      screen: RepositoryDetailScreen,
+      navigationOptions: () => ({
+        headerStyle,
+        headerTintColor: '#fff',
+        title: 'Repository Details',
+      }),
+    },
+    ErrorScreen: {
+      screen: ErrorScreen,
+      navigationOptions: () => ({
+        headerStyle,
+        headerTintColor: '#fff',
+        title: 'Author',
+      }),
+    },
+  },
+  {
+    initialRouteName: 'SearchScreen',
+  }
+);
 
 export default RootNavigator;
