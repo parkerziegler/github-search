@@ -18,5 +18,13 @@
     "react-navigation": "^1.0.0-beta.22",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "prettier": "eslint . --fix"
+  },
+  "devDependencies": {
+    "eslint": "^4.18.1",
+    "eslint-config-react-native-prettier": "^1.0.1"
   }
 }
