@@ -1,35 +1,33 @@
 import getRepositoryName from '../graphql/getRepositoryName';
 
 const searchResolvers = {
-    defaults: {
-        repositoryName: {
-            name: "",
-            __typename: "RepositoryName",
-        }
+  defaults: {
+    repositoryName: {
+      name: '',
+      __typename: 'RepositoryName',
     },
-    resolvers: {
-      Mutation: {
-        trackRepositoryName: (_, { name }, { cache }) => {
+  },
+  resolvers: {
+    Mutation: {
+      trackRepositoryName: (_, { name }, { cache }) => {
+        const query = getRepositoryName;
 
-            const query = getRepositoryName;
+        const previousState = cache.readQuery({ query });
 
-            const previousState = cache.readQuery({ query });
+        const data = {
+          ...previousState,
+          repositoryName: {
+            name,
+            __typename: 'RepositoryName',
+          },
+        };
 
-            const data = {
-                ...previousState,
-                repositoryName: {
-                    name,
-                    __typename: "RepositoryName"
-                }
-            };
+        cache.writeData({ query, data });
 
-            cache.writeData({ query, data });
-
-            return null;
-          
-        }
-      }
-    }
+        return null;
+      },
+    },
+  },
 };
 
 export default searchResolvers;

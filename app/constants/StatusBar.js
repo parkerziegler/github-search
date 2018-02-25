@@ -5,8 +5,8 @@ import { Constants } from 'expo';
 const styles = StyleSheet.create({
   statusBar: {
     height: Constants.statusBarHeight,
-    backgroundColor: 'rgba(0, 0, 0, 0)'
-  }
+    backgroundColor: 'rgba(0, 0, 0, 0)',
+  },
 });
 
 const StatusBar = () => <View style={styles.statusBar} />;
