@@ -2,14 +2,16 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Button } from 'react-native-elements';
 
-const ErrorScreen = ({ navigation }) => {
+const Error = ({ navigation }) => {
   const onPress = () => {
     navigation.navigate('SearchScreen');
   };
 
   return (
     <View style={styles.container}>
-      <Text>🤔 Oops, we couldn&apos;t find that person! 🤔</Text>
+      <Text style={styles.text}>
+        🤔 Hmmmmm, we couldn&apos;t find that person. 🤔
+      </Text>
       <Button
         title="Return to Search"
         onPress={onPress}
@@ -25,7 +27,14 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    flex: 1,
+  },
+  text: {
+    marginBottom: 5,
+    color: '#222',
+    fontSize: 21,
+    textAlign: 'center',
   },
 });
 
-export default ErrorScreen;
+export default Error;

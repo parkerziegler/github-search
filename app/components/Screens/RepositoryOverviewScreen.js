@@ -1,6 +1,7 @@
 import React from 'react';
 import { graphql, compose } from 'react-apollo';
 import { View, StyleSheet, ActivityIndicator } from 'react-native';
+import Error from '../Helpers/Error';
 import RepositoryOwner from '../Repository/RepositoryOwner';
 import RepositoryOverviewList from '../Repository/RepositoryOverviewList';
 import getRepositoryOverview from '../../graphql/getRepositoryOverview';
@@ -10,7 +11,6 @@ class RepositoryOverviewScreen extends React.Component {
   render() {
     const { data, navigation } = this.props;
 
-    console.log(data);
     if (data.loading || data.error) {
       return (
         <View style={styles.container}>
@@ -19,10 +19,8 @@ class RepositoryOverviewScreen extends React.Component {
       );
     }
 
-    if (data.repositoryOwner === undefined) {
-      console.log('Hitting here!');
-      navigation.navigate('ErrorScreen');
-      return null;
+    if (!data.repositoryOwner) {
+      return <Error navigation={navigation} />;
     }
 
     return (
