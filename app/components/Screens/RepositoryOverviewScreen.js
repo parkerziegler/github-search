@@ -11,7 +11,7 @@ class RepositoryOverviewScreen extends React.Component {
   render() {
     const { data, navigation } = this.props;
 
-    if (data.loading || data.error) {
+    if (data.loading) {
       return (
         <View style={styles.container}>
           <ActivityIndicator size="large" color="#000" />
@@ -19,7 +19,7 @@ class RepositoryOverviewScreen extends React.Component {
       );
     }
 
-    if (!data.repositoryOwner) {
+    if (!data.repositoryOwner || data.error) {
       return <Error navigation={navigation} />;
     }
 
@@ -71,7 +71,6 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   infoContainer: {
-    display: 'flex',
     flex: 1,
     marginLeft: 10,
     justifyContent: 'center',

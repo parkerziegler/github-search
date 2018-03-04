@@ -23,7 +23,7 @@ const RootNavigator = StackNavigator(
       navigationOptions: () => ({
         headerStyle,
         headerTintColor: '#fff',
-        title: 'Respositories',
+        title: 'Repositories',
       }),
     },
     AuthorScreen: {
