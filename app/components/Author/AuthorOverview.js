@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import LabeledIcon from '../Helpers/LabeledIcon';
+import LabeledIcon from '../Primitives/LabeledIcon';
 
 export default class AuthorOverview extends React.Component {
   render() {

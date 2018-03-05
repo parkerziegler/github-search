@@ -4,12 +4,12 @@ import {
   View,
   Image,
   Text,
-  TextInput,
   StyleSheet,
   Platform,
   Keyboard,
 } from 'react-native';
 import StatusBar from '../../constants/StatusBar';
+import TextInput from '../Primitives/TextInput';
 import { Button } from 'react-native-elements';
 import { graphql, compose } from 'react-apollo';
 import getSearch from '../../graphql/getSearch';
@@ -26,7 +26,7 @@ class SearchScreen extends React.Component {
 
   onChangeText = text => {
     const { handleChange } = this.props;
-    handleChange(text);
+    handleChange(text.trim().toLowerCase());
   };
 
   render() {
@@ -47,7 +47,6 @@ class SearchScreen extends React.Component {
           source={require('../../../assets/GitHub-Mark-120px-plus.png')}
         />
         <TextInput
-          style={styles.input}
           onChangeText={this.onChangeText}
           value={input}
           placeholder="Search for a GitHub user"
@@ -58,7 +57,7 @@ class SearchScreen extends React.Component {
           icon={{ name: 'search' }}
           title="Search"
           onPress={this.onSubmitHandler}
-          backgroundColor="#000000"
+          backgroundColor="#222"
           buttonStyle={styles.button}
         />
       </KeyboardAvoidingView>
@@ -88,9 +87,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   titleContainer: {
-    display: 'flex',
     flexDirection: 'row',
-    alignItems: 'flex-end',
   },
   title: {
     fontSize: 28,
@@ -100,12 +97,5 @@ const styles = StyleSheet.create({
     marginTop: 10,
     paddingLeft: 20,
     paddingRight: 20,
-  },
-  input: {
-    alignSelf: 'stretch',
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-    paddingLeft: 5,
   },
 });

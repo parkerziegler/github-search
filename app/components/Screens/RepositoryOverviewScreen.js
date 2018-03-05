@@ -1,7 +1,9 @@
 import React from 'react';
 import { graphql, compose } from 'react-apollo';
-import { View, StyleSheet, ActivityIndicator } from 'react-native';
-import Error from '../Helpers/Error';
+import { StyleSheet, ActivityIndicator } from 'react-native';
+import { Button } from 'react-native-elements';
+import Error from '../Primitives/Error';
+import ScreenView from '../Primitives/ScreenView';
 import RepositoryOwner from '../Repository/RepositoryOwner';
 import RepositoryOverviewList from '../Repository/RepositoryOverviewList';
 import getRepositoryOverview from '../../graphql/getRepositoryOverview';
@@ -9,27 +11,30 @@ import getSearch from '../../graphql/getSearch';
 
 class RepositoryOverviewScreen extends React.Component {
   render() {
-    const { data, navigation } = this.props;
+    const {
+      data: { loading, error, repositoryOwner, user },
+      navigation,
+    } = this.props;
 
-    if (data.loading) {
+    if (loading) {
       return (
-        <View style={styles.container}>
-          <ActivityIndicator size="large" color="#000" />
-        </View>
+        <ScreenView>
+          <ActivityIndicator size="large" color="#222" />
+        </ScreenView>
       );
     }
 
-    if (!data.repositoryOwner || data.error) {
+    if (!repositoryOwner || error) {
       return <Error navigation={navigation} />;
     }
 
     return (
-      <View style={styles.container}>
+      <ScreenView>
         <RepositoryOwner
-          url={data.repositoryOwner.url}
-          avatarUrl={data.repositoryOwner.avatarUrl}
-          name={data.user.name}
-          login={data.user.login}
+          url={repositoryOwner.url}
+          avatarUrl={repositoryOwner.avatarUrl}
+          name={user.name}
+          login={user.login}
           height={75}
           width={75}
           containerStyle={null}
@@ -38,10 +43,18 @@ class RepositoryOverviewScreen extends React.Component {
           onAvatarPress={() => navigation.navigate('AuthorScreen')}
         />
         <RepositoryOverviewList
-          repos={data.repositoryOwner.repositories.nodes}
+          repos={repositoryOwner.repositories.nodes}
           navigation={navigation}
         />
-      </View>
+        <Button
+          small
+          icon={{ name: 'search' }}
+          title="Search"
+          onPress={() => console.log('button')}
+          backgroundColor="#222"
+          buttonStyle={styles.button}
+        />
+      </ScreenView>
     );
   }
 }
@@ -63,13 +76,6 @@ export default compose(
 )(RepositoryOverviewScreen);
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 20,
-  },
   infoContainer: {
     flex: 1,
     marginLeft: 10,

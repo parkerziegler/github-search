@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { FlatList } from 'react-native';
 import RepositoryOverview from './RepositoryOverview';
 
-class RepositoryOverviewList extends Component {
-  renderItem = ({ item }) => {
+class RepositoryOverviewList extends React.Component {
+  renderItem = ({ item: { name, description, url } }) => {
     const { navigation } = this.props;
 
     return (
       <RepositoryOverview
-        name={item.name}
-        description={item.description}
-        url={item.url}
+        name={name}
+        description={description}
+        url={url}
         navigation={navigation}
       />
     );

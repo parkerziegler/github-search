@@ -4,7 +4,7 @@ import { graphql, compose } from 'react-apollo';
 import getSearch from '../../graphql/getSearch';
 import getRepositoryName from '../../graphql/getRepositoryName';
 import getRepositoryDetail from '../../graphql/getRepositoryDetail';
-import LabeledIcon from '../Helpers/LabeledIcon';
+import LabeledIcon from '../Primitives/LabeledIcon';
 import CommitHistory from '../Repository/RepositoryDetails/CommitHistory';
 
 const RepositoryDetailScreen = props => {
