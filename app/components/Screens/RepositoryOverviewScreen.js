@@ -10,11 +10,29 @@ import getRepositoryOverview from '../../graphql/getRepositoryOverview';
 import getSearch from '../../graphql/getSearch';
 
 class RepositoryOverviewScreen extends React.Component {
+  onFetchMore = () => {
+    const { data: { fetchMore, repositoryOwner } } = this.props;
+    const reposLength = repositoryOwner.repositories.edges.length;
+    const cursor = repositoryOwner.repositories.edges[reposLength - 1].cursor;
+
+    fetchMore({
+      variables: {
+        login: 'parkerziegler',
+        cursor,
+      },
+      updateQuery: (previousResult, { fetchMoreResult }) => {
+        console.log(fetchMoreResult);
+        return previousResult;
+      },
+    });
+  };
+
   render() {
     const {
       data: { loading, error, repositoryOwner, user },
       navigation,
     } = this.props;
+    console.log(this.props.data);
 
     if (loading) {
       return (
@@ -43,15 +61,15 @@ class RepositoryOverviewScreen extends React.Component {
           onAvatarPress={() => navigation.navigate('AuthorScreen')}
         />
         <RepositoryOverviewList
-          repos={repositoryOwner.repositories.nodes}
+          repos={repositoryOwner.repositories.edges}
           navigation={navigation}
         />
         <Button
           small
           icon={{ name: 'search' }}
           title="Search"
-          onPress={() => console.log('button')}
-          backgroundColor="#222"
+          onPress={this.onFetchMore}
+          backgroundColor="#fff"
           buttonStyle={styles.button}
         />
       </ScreenView>
@@ -69,6 +87,7 @@ export default compose(
     options: ({ input }) => ({
       variables: {
         login: input,
+        cursor: null,
       },
       errorPolicy: 'all',
     }),
@@ -82,8 +101,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   button: {
-    marginTop: 10,
     paddingLeft: 20,
     paddingRight: 20,
+    borderColor: '#222',
+    borderWidth: 1,
   },
 });

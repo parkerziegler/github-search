@@ -1,15 +1,18 @@
 import gql from 'graphql-tag';
 
 export default gql`
-  query repositoryOwner($login: String!) {
+  query repositoryOwner($login: String!, $cursor: String) {
     repositoryOwner(login: $login) {
       url
       avatarUrl(size: 100)
-      repositories(last: 5) {
-        nodes {
-          name
-          description
-          url
+      repositories(first: 5, after: $cursor) {
+        edges {
+          cursor
+          node {
+            name
+            description
+            url
+          }
         }
       }
     }

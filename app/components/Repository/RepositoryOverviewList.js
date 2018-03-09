@@ -3,9 +3,8 @@ import { FlatList } from 'react-native';
 import RepositoryOverview from './RepositoryOverview';
 
 class RepositoryOverviewList extends React.Component {
-  renderItem = ({ item: { name, description, url } }) => {
+  renderItem = ({ item: { node: { name, description, url } } }) => {
     const { navigation } = this.props;
-
     return (
       <RepositoryOverview
         name={name}
@@ -18,7 +17,6 @@ class RepositoryOverviewList extends React.Component {
 
   render() {
     const { repos } = this.props;
-
     return (
       <FlatList
         data={repos}
