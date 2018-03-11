@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
+import { Avatar } from 'react-native-elements';
 import LabeledIcon from '../Primitives/LabeledIcon';
 
 export default class AuthorOverview extends React.Component {
@@ -10,6 +11,7 @@ export default class AuthorOverview extends React.Component {
       followerCount,
       websiteUrl,
       repoCount,
+      organizations,
     } = this.props;
 
     const data = [
@@ -30,9 +32,25 @@ export default class AuthorOverview extends React.Component {
 
     return (
       <View style={styles.container}>
-        {data.map((item, index) => (
-          <LabeledIcon {...item} iconSize={40} color={'#222'} key={index} />
-        ))}
+        {data.map(
+          (item, index) =>
+            item.item && (
+              <LabeledIcon {...item} iconSize={30} color={'#222'} key={index} />
+            )
+        )}
+        <View style={{ flex: 1, flexDirection: 'row' }}>
+          {organizations.map(({ node: { avatarUrl, name } }) => (
+            <Avatar
+              key={name}
+              height={50}
+              width={50}
+              source={{ uri: avatarUrl }}
+              containerStyle={{
+                margin: 10,
+              }}
+            />
+          ))}
+        </View>
       </View>
     );
   }
@@ -40,6 +58,6 @@ export default class AuthorOverview extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    display: 'flex',
+    flex: 1,
   },
 });

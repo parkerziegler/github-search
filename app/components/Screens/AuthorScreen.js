@@ -44,6 +44,7 @@ const AuthorScreen = props => {
         followerCount={data.user.followers.totalCount}
         websiteUrl={data.user.websiteUrl}
         repoCount={data.user.repositories.totalCount}
+        organizations={data.user.organizations.edges}
       />
     </View>
   );
@@ -70,9 +71,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     padding: 20,
+    justifyContent: 'space-around',
   },
   infoContainer: {
-    display: 'flex',
     alignItems: 'center',
     marginBottom: 20,
   },

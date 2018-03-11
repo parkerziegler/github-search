@@ -18,6 +18,14 @@ export default gql`
       followers {
         totalCount
       }
+      organizations(last: 3) {
+        edges {
+          node {
+            avatarUrl
+            name
+          }
+        }
+      }
     }
   }
 `;
