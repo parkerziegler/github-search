@@ -16,12 +16,13 @@ class RepositoryOverviewList extends React.Component {
   };
 
   render() {
-    const { repos } = this.props;
+    const { repos, onEndReached } = this.props;
     return (
       <FlatList
         data={repos}
         renderItem={repo => this.renderItem(repo)}
         keyExtractor={(item, index) => index}
+        onEndReached={onEndReached}
       />
     );
   }

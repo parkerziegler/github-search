@@ -1,7 +1,6 @@
 import React from 'react';
 import { graphql, compose } from 'react-apollo';
 import { StyleSheet, ActivityIndicator } from 'react-native';
-import { Button } from 'react-native-elements';
 import Error from '../Primitives/Error';
 import ScreenView from '../Primitives/ScreenView';
 import RepositoryOwner from '../Repository/RepositoryOwner';
@@ -11,18 +10,30 @@ import getSearch from '../../graphql/getSearch';
 
 class RepositoryOverviewScreen extends React.Component {
   onFetchMore = () => {
-    const { data: { fetchMore, repositoryOwner } } = this.props;
-    const reposLength = repositoryOwner.repositories.edges.length;
-    const cursor = repositoryOwner.repositories.edges[reposLength - 1].cursor;
+    const {
+      data: { fetchMore, repositoryOwner: { repositories: { edges } } },
+    } = this.props;
+    const cursor = edges[edges.length - 1].cursor;
 
     fetchMore({
       variables: {
-        login: 'parkerziegler',
         cursor,
       },
       updateQuery: (previousResult, { fetchMoreResult }) => {
-        console.log(fetchMoreResult);
-        return previousResult;
+        const prevRepos = previousResult.repositoryOwner.repositories.edges;
+        const newRepos = fetchMoreResult.repositoryOwner.repositories.edges;
+        const edges = [...prevRepos, ...newRepos];
+
+        return {
+          ...previousResult,
+          repositoryOwner: {
+            ...previousResult.repositoryOwner,
+            repositories: {
+              ...previousResult.repositoryOwner.repositories,
+              edges,
+            },
+          },
+        };
       },
     });
   };
@@ -32,7 +43,6 @@ class RepositoryOverviewScreen extends React.Component {
       data: { loading, error, repositoryOwner, user },
       navigation,
     } = this.props;
-    console.log(this.props.data);
 
     if (loading) {
       return (
@@ -63,14 +73,7 @@ class RepositoryOverviewScreen extends React.Component {
         <RepositoryOverviewList
           repos={repositoryOwner.repositories.edges}
           navigation={navigation}
-        />
-        <Button
-          small
-          icon={{ name: 'search' }}
-          title="Search"
-          onPress={this.onFetchMore}
-          backgroundColor="#fff"
-          buttonStyle={styles.button}
+          onEndReached={this.onFetchMore}
         />
       </ScreenView>
     );

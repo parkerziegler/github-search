@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
   container: {
     display: 'flex',
     alignItems: 'center',
+    marginBottom: 10,
   },
   infoContainer: {
     display: 'flex',
