@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet } from 'react-native';
 import { Button } from 'react-native-elements';
+import ScreenView from './ScreenView';
 
 const Error = ({ navigation }) => {
   const onPress = () => {
@@ -8,17 +9,17 @@ const Error = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>
-        🤔 Hmmmmm, we couldn&apos;t find that person. 🤔
+    <ScreenView style={styles.container}>
+      <Text style={[styles.text, { fontSize: 40 }]}>🤔</Text>
+      <Text style={[styles.text, { fontSize: 18 }]}>
+        We couldn&apos;t find that person.
       </Text>
       <Button
         title="Return to Search"
         onPress={onPress}
-        icon={{ name: 'chevron-left' }}
-        backgroundColor="#000"
+        backgroundColor="#222"
       />
-    </View>
+    </ScreenView>
   );
 };
 
@@ -29,9 +30,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   text: {
-    marginBottom: 5,
+    margin: 10,
     color: '#222',
-    fontSize: 21,
     textAlign: 'center',
   },
 });

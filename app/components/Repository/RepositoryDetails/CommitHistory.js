@@ -27,6 +27,7 @@ const TouchableComponent = ({ children, commitUrl }) =>
 
 const CommitHistory = ({ edges }) => (
   <FlatList
+    style={{ alignSelf: 'stretch' }}
     data={edges}
     renderItem={({ item: { node: { message, oid, commitUrl } } }) => (
       <TouchableComponent commitUrl={commitUrl}>

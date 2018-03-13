@@ -1,6 +1,6 @@
 import getRepositoryName from '../graphql/getRepositoryName';
 
-const searchResolvers = {
+const repositoryResolvers = {
   defaults: {
     repositoryName: {
       name: '',
@@ -30,4 +30,4 @@ const searchResolvers = {
   },
 };
 
-export default searchResolvers;
+export default repositoryResolvers;
