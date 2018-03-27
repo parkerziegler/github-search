@@ -17,11 +17,11 @@ import trackSearch from '../../graphql/trackSearch';
 
 class SearchScreen extends React.Component {
   onSubmitHandler = () => {
-    const { navigation } = this.props;
+    const { navigation, input } = this.props;
 
     // dismiss the keyboard and navigate to the next screen
     Keyboard.dismiss();
-    navigation.navigate('RepositoryOverviewScreen');
+    navigation.navigate('RepositoryOverviewScreen', { username: input });
   };
 
   onChangeText = text => {
