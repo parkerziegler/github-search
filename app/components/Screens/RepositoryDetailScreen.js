@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
   },
   historyContainer: {
-    display: 'flex',
     flex: 1,
+    alignSelf: 'stretch',
   },
 });

@@ -3,11 +3,9 @@ import SearchScreen from '../Screens/SearchScreen';
 import RepositoryOverviewScreen from '../Screens/RepositoryOverviewScreen';
 import AuthorScreen from '../Screens/AuthorScreen';
 import RepositoryDetailScreen from '../Screens/RepositoryDetailScreen';
-import { Constants } from 'expo';
 
 const headerStyle = {
   backgroundColor: '#222',
-  marginTop: Constants.statusBarHeight,
 };
 
 const RootNavigator = StackNavigator(
@@ -20,10 +18,10 @@ const RootNavigator = StackNavigator(
     },
     RepositoryOverviewScreen: {
       screen: RepositoryOverviewScreen,
-      navigationOptions: () => ({
+      navigationOptions: ({ navigation }) => ({
         headerStyle,
         headerTintColor: '#fff',
-        title: 'Repositories',
+        title: `${navigation.state.params.username}`,
       }),
     },
     AuthorScreen: {
@@ -36,10 +34,10 @@ const RootNavigator = StackNavigator(
     },
     RepositoryDetailScreen: {
       screen: RepositoryDetailScreen,
-      navigationOptions: () => ({
+      navigationOptions: ({ navigation }) => ({
         headerStyle,
         headerTintColor: '#fff',
-        title: 'Repository Details',
+        title: `${navigation.state.params.repositoryName}`,
       }),
     },
   },

@@ -8,34 +8,28 @@ class RepositoryOverview extends React.Component {
   handleTitlePress = () => {
     const { navigation, handlePress, name } = this.props;
     handlePress(name);
-    navigation.navigate('RepositoryDetailScreen');
+    navigation.navigate('RepositoryDetailScreen', { repositoryName: name });
   };
 
   render() {
     const { name, description } = this.props;
 
     return (
-      <View style={styles.repoContainer}>
+      <View style={styles.container}>
         <Button
           title={name}
-          iconRight={{ name: 'call-made', color: '#000' }}
+          iconRight={{ name: 'call-made', color: '#222' }}
           small
           onPress={this.handleTitlePress}
-          textStyle={styles.repoName}
+          textStyle={[styles.repoName, styles.fontColor, styles.flexWrap]}
+          color="#222"
           backgroundColor="#FFF"
-          buttonStyle={{
-            alignSelf: 'flex-start',
-            paddingBottom: 0.5,
-            paddingLeft: 0,
-          }}
-          containerViewStyle={{
-            borderBottomColor: '#000',
-            borderBottomWidth: 1,
-            marginLeft: 0,
-            marginRight: 0,
-          }}
+          buttonStyle={styles.button}
+          containerViewStyle={styles.buttonContainer}
         />
-        <Text style={styles.repoDescription}>{description}</Text>
+        <View style={styles.repoDescriptionContainer}>
+          <Text style={[styles.fontColor, styles.flexWrap]}>{description}</Text>
+        </View>
       </View>
     );
   }
@@ -48,18 +42,34 @@ export default graphql(trackRepositoryName, {
 })(RepositoryOverview);
 
 const styles = StyleSheet.create({
-  repoContainer: {
-    display: 'flex',
+  container: {
     flex: 1,
-    marginBottom: 5,
+    alignItems: 'flex-start',
   },
   repoName: {
-    color: '#000000',
-    fontSize: 20,
     fontFamily: Platform.OS === 'ios' ? 'HelveticaNeue' : 'Roboto',
     fontWeight: Platform.OS === 'ios' ? '500' : '700',
+    fontSize: 20,
   },
-  repoDescription: {
-    fontSize: 14,
+  repoDescriptionContainer: {
+    borderTopColor: '#222',
+    borderTopWidth: 1,
+    paddingTop: 3,
+    alignSelf: 'stretch',
+  },
+  fontColor: {
+    color: '#222',
+  },
+  flexWrap: {
+    flexWrap: 'wrap',
+  },
+  button: {
+    paddingLeft: 0,
+    paddingBottom: 3,
+  },
+  buttonContainer: {
+    marginLeft: 0,
+    marginRight: 0,
+    maxWidth: '100%',
   },
 });

@@ -103,10 +103,4 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     justifyContent: 'center',
   },
-  button: {
-    paddingLeft: 20,
-    paddingRight: 20,
-    borderColor: '#222',
-    borderWidth: 1,
-  },
 });

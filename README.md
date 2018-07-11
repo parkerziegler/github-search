@@ -1,6 +1,8 @@
 # github-search
 A simple React Native app for searching GitHub users.
 
+![github-search-demo](/static/github-search-demo.gif)
+
 ## Installation
 This app uses [Expo](https://expo.io/) in development. For the best experience, download the Expo mobile app and the Expo XDE - this will allow you to test on both emulators / simulators and your own device. For more information, check out [Expo's Tools documentation](https://expo.io/tools).
 

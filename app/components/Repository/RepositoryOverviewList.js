@@ -1,5 +1,6 @@
 import React from 'react';
 import { FlatList } from 'react-native';
+
 import RepositoryOverview from './RepositoryOverview';
 
 class RepositoryOverviewList extends React.Component {
@@ -19,6 +20,7 @@ class RepositoryOverviewList extends React.Component {
     const { repos, onEndReached } = this.props;
     return (
       <FlatList
+        style={{ flex: 1 }}
         data={repos}
         renderItem={repo => this.renderItem(repo)}
         keyExtractor={(item, index) => index}
