@@ -1,46 +1,47 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View, Text, StyleSheet } from 'react-native';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
 import EvilIcon from 'react-native-vector-icons/EvilIcons';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 
-export default class LabeledIcon extends React.Component {
-  getIcon = (iconType, iconName, iconSize, iconColor) => {
-    const props = {
-      name: iconName,
-      size: iconSize,
-      color: iconColor,
-    };
+const getIcon = (iconConfig) => {
+  const { iconType, iconName, iconSize, iconColor } = iconConfig;
 
-    switch (iconType) {
-      case 'material':
-        return <MaterialIcon {...props} />;
-      case 'entypo':
-        return <EntypoIcon {...props} />;
-      case 'evil':
-        return <EvilIcon {...props} />;
-      case 'font-awesome':
-        return <FontAwesomeIcon {...props} />;
-      default:
-        return <MaterialIcon {...props} />;
-    }
-  };
-
-  render() {
-    const { iconType, iconName, iconSize, iconColor, item } = this.props;
-
-    return (
-      <View style={styles.itemContainer}>
-        {this.getIcon(iconType, iconName, iconSize, iconColor)}
-        <Text style={styles.text}>{item}</Text>
-      </View>
-    );
+  switch (iconType) {
+    case 'material':
+      return <MaterialIcon name={iconName} size={iconSize} color={iconColor} />;
+    case 'entypo':
+      return <EntypoIcon name={iconName} size={iconSize} color={iconColor} />;
+    case 'evil':
+      return <EvilIcon name={iconName} size={iconSize} color={iconColor} />;
+    case 'font-awesome':
+      return (
+        <FontAwesomeIcon name={iconName} size={iconSize} color={iconColor} />
+      );
+    default:
+      return <MaterialIcon name={iconName} size={iconSize} color={iconColor} />;
   }
-}
+};
+
+const LabeledIcon = ({ iconType, iconName, iconSize, iconColor, item }) => (
+  <View style={styles.icon}>
+    {getIcon({ iconType, iconName, iconSize, iconColor })}
+    <Text style={styles.text}>{item}</Text>
+  </View>
+);
+
+LabeledIcon.propTypes = {
+  iconType: PropTypes.string.isRequired,
+  iconName: PropTypes.string.isRequired,
+  iconSize: PropTypes.number.isRequired,
+  iconColor: PropTypes.string.isRequired,
+  item: PropTypes.string.isRequired,
+};
 
 const styles = StyleSheet.create({
-  itemContainer: {
+  icon: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
@@ -52,3 +53,5 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
 });
+
+export default LabeledIcon;
