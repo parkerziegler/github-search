@@ -50,19 +50,34 @@ describe('<LabeledIcon />', () => {
       .toJSON();
 
     expect(treeEntypo).toMatchSnapshot();
+
+    const treeEvil = renderer
+      .create(
+        <LabeledIcon
+          iconName="sc-github"
+          iconType="evil"
+          iconSize={30}
+          iconColor="#222"
+          item="Test Icon"
+        />
+      )
+      .toJSON();
+
+    expect(treeEvil).toMatchSnapshot();
   });
 
-  const treeEvil = renderer
-    .create(
-      <LabeledIcon
-        iconName="sc-github"
-        iconType="evil"
-        iconSize={30}
-        iconColor="#222"
-        item="Test Icon"
-      />
-    )
-    .toJSON();
+  it('renders the default material icon if no iconType prop is passed', () => {
+    const tree = renderer
+      .create(
+        <LabeledIcon
+          iconName="star"
+          iconSize={30}
+          iconColor="#222"
+          item="Test Icon"
+        />
+      )
+      .toJSON();
 
-  expect(treeEvil).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
+  });
 });

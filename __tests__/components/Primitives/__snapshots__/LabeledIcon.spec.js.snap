@@ -99,7 +99,73 @@ exports[`<LabeledIcon /> renders properly for all icon types 2`] = `
 </View>
 `;
 
+exports[`<LabeledIcon /> renders properly for all icon types 3`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+      "flexDirection": "row",
+      "margin": 5,
+    }
+  }
+>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+  />
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "color": "#222",
+        "fontSize": 15,
+        "marginLeft": 10,
+      }
+    }
+  >
+    Test Icon
+  </Text>
+</View>
+`;
+
 exports[`<LabeledIcon /> renders properly given the correct props 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+      "flexDirection": "row",
+      "margin": 5,
+    }
+  }
+>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+  />
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "color": "#222",
+        "fontSize": 15,
+        "marginLeft": 10,
+      }
+    }
+  >
+    Test Icon
+  </Text>
+</View>
+`;
+
+exports[`<LabeledIcon /> renders the default material icon if no iconType prop is passed 1`] = `
 <View
   style={
     Object {

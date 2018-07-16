@@ -33,7 +33,7 @@ const LabeledIcon = ({ iconType, iconName, iconSize, iconColor, item }) => (
 );
 
 LabeledIcon.propTypes = {
-  iconType: PropTypes.string.isRequired,
+  iconType: PropTypes.string,
   iconName: PropTypes.string.isRequired,
   iconSize: PropTypes.number.isRequired,
   iconColor: PropTypes.string.isRequired,
