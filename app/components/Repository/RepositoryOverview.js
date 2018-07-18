@@ -1,10 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View, Text, StyleSheet, Platform } from 'react-native';
 import { Button } from 'react-native-elements';
 import { graphql } from 'react-apollo';
+
 import trackRepositoryName from '../../graphql/trackRepositoryName';
 
-class RepositoryOverview extends React.Component {
+export class RepositoryOverview extends React.Component {
+  static propTypes = {
+    navigation: PropTypes.object.isRequired,
+    handlePress: PropTypes.func.isRequired,
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+  };
+
   handleTitlePress = () => {
     const { navigation, handlePress, name } = this.props;
     handlePress(name);
@@ -37,7 +46,7 @@ class RepositoryOverview extends React.Component {
 
 export default graphql(trackRepositoryName, {
   props: ({ mutate }) => ({
-    handlePress: name => mutate({ variables: { name } }),
+    handlePress: (name) => mutate({ variables: { name } }),
   }),
 })(RepositoryOverview);
 
