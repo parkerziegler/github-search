@@ -1,0 +1,132 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RepositoryOverviewList /> renders correctly with all required props 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <RepositoryOverviewList
+    navigation={
+      Object {
+        "navigate": [MockFunction],
+      }
+    }
+    onEndReached={[MockFunction]}
+    repos={
+      Array [
+        Object {
+          "node": Object {
+            "description": "A mapping app visualizing police shootings in the United States.",
+            "name": "d3-react-map",
+            "url": "https://github.com/parkerziegler/d3-react-map",
+          },
+        },
+        Object {
+          "node": Object {
+            "description": "A React Native app for searching Github users.",
+            "name": "github-search",
+            "url": "https://github.com/parkerziegler/github-search",
+          },
+        },
+      ]
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "data": Array [
+        Object {
+          "node": Object {
+            "description": "A mapping app visualizing police shootings in the United States.",
+            "name": "d3-react-map",
+            "url": "https://github.com/parkerziegler/d3-react-map",
+          },
+        },
+        Object {
+          "node": Object {
+            "description": "A React Native app for searching Github users.",
+            "name": "github-search",
+            "url": "https://github.com/parkerziegler/github-search",
+          },
+        },
+      ],
+      "disableVirtualization": false,
+      "horizontal": false,
+      "initialNumToRender": 10,
+      "keyExtractor": [Function],
+      "maxToRenderPerBatch": 10,
+      "numColumns": 1,
+      "onEndReached": [MockFunction],
+      "onEndReachedThreshold": 2,
+      "renderItem": [Function],
+      "scrollEventThrottle": 50,
+      "style": Object {
+        "flex": 1,
+      },
+      "updateCellsBatchingPeriod": 50,
+      "windowSize": 21,
+    },
+    "ref": null,
+    "rendered": null,
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "data": Array [
+          Object {
+            "node": Object {
+              "description": "A mapping app visualizing police shootings in the United States.",
+              "name": "d3-react-map",
+              "url": "https://github.com/parkerziegler/d3-react-map",
+            },
+          },
+          Object {
+            "node": Object {
+              "description": "A React Native app for searching Github users.",
+              "name": "github-search",
+              "url": "https://github.com/parkerziegler/github-search",
+            },
+          },
+        ],
+        "disableVirtualization": false,
+        "horizontal": false,
+        "initialNumToRender": 10,
+        "keyExtractor": [Function],
+        "maxToRenderPerBatch": 10,
+        "numColumns": 1,
+        "onEndReached": [MockFunction],
+        "onEndReachedThreshold": 2,
+        "renderItem": [Function],
+        "scrollEventThrottle": 50,
+        "style": Object {
+          "flex": 1,
+        },
+        "updateCellsBatchingPeriod": 50,
+        "windowSize": 21,
+      },
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

@@ -1,0 +1,837 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RepositoryOwner /> renders correctly with all required props 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <RepositoryOwner
+    avatarUrl="mock"
+    containerStyle={Object {}}
+    flexDirection="column"
+    height={100}
+    infoContainerStyle={Object {}}
+    login="parkerziegler"
+    name="Parker Ziegler"
+    onAvatarPress={[MockFunction]}
+    width={100}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <Avatar
+          containerStyle={Object {}}
+          editButton={
+            Object {
+              "iconColor": "#fff",
+              "iconName": "mode-edit",
+              "iconType": "material",
+              "size": null,
+              "style": null,
+              "underlayColor": "#000",
+            }
+          }
+          height={100}
+          onEditPress={null}
+          onPress={[MockFunction]}
+          rounded={true}
+          showEditButton={false}
+          source={
+            Object {
+              "uri": "mock",
+            }
+          }
+          width={100}
+        />,
+        <View
+          style={Object {}}
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#000",
+                "fontSize": 22,
+                "fontWeight": "700",
+              }
+            }
+          >
+            Parker Ziegler
+          </Text>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#6C7680",
+                "fontSize": 18,
+              }
+            }
+          >
+            parkerziegler
+          </Text>
+        </View>,
+      ],
+      "style": Array [
+        Object {
+          "alignItems": "center",
+          "display": "flex",
+          "marginBottom": 10,
+        },
+        Object {
+          "flexDirection": "column",
+        },
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "containerStyle": Object {},
+          "editButton": Object {
+            "iconColor": "#fff",
+            "iconName": "mode-edit",
+            "iconType": "material",
+            "size": null,
+            "style": null,
+            "underlayColor": "#000",
+          },
+          "height": 100,
+          "onEditPress": null,
+          "onPress": [MockFunction],
+          "rounded": true,
+          "showEditButton": false,
+          "source": Object {
+            "uri": "mock",
+          },
+          "width": 100,
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Object {
+                  "color": "#000",
+                  "fontSize": 22,
+                  "fontWeight": "700",
+                }
+              }
+            >
+              Parker Ziegler
+            </Text>,
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Object {
+                  "color": "#6C7680",
+                  "fontSize": 18,
+                }
+              }
+            >
+              parkerziegler
+            </Text>,
+          ],
+          "style": Object {},
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "accessible": true,
+              "allowFontScaling": true,
+              "children": "Parker Ziegler",
+              "ellipsizeMode": "tail",
+              "style": Object {
+                "color": "#000",
+                "fontSize": 22,
+                "fontWeight": "700",
+              },
+            },
+            "ref": null,
+            "rendered": "Parker Ziegler",
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "accessible": true,
+              "allowFontScaling": true,
+              "children": "parkerziegler",
+              "ellipsizeMode": "tail",
+              "style": Object {
+                "color": "#6C7680",
+                "fontSize": 18,
+              },
+            },
+            "ref": null,
+            "rendered": "parkerziegler",
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <Avatar
+            containerStyle={Object {}}
+            editButton={
+              Object {
+                "iconColor": "#fff",
+                "iconName": "mode-edit",
+                "iconType": "material",
+                "size": null,
+                "style": null,
+                "underlayColor": "#000",
+              }
+            }
+            height={100}
+            onEditPress={null}
+            onPress={[MockFunction]}
+            rounded={true}
+            showEditButton={false}
+            source={
+              Object {
+                "uri": "mock",
+              }
+            }
+            width={100}
+          />,
+          <View
+            style={Object {}}
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Object {
+                  "color": "#000",
+                  "fontSize": 22,
+                  "fontWeight": "700",
+                }
+              }
+            >
+              Parker Ziegler
+            </Text>
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Object {
+                  "color": "#6C7680",
+                  "fontSize": 18,
+                }
+              }
+            >
+              parkerziegler
+            </Text>
+          </View>,
+        ],
+        "style": Array [
+          Object {
+            "alignItems": "center",
+            "display": "flex",
+            "marginBottom": 10,
+          },
+          Object {
+            "flexDirection": "column",
+          },
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "containerStyle": Object {},
+            "editButton": Object {
+              "iconColor": "#fff",
+              "iconName": "mode-edit",
+              "iconType": "material",
+              "size": null,
+              "style": null,
+              "underlayColor": "#000",
+            },
+            "height": 100,
+            "onEditPress": null,
+            "onPress": [MockFunction],
+            "rounded": true,
+            "showEditButton": false,
+            "source": Object {
+              "uri": "mock",
+            },
+            "width": 100,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "color": "#000",
+                    "fontSize": 22,
+                    "fontWeight": "700",
+                  }
+                }
+              >
+                Parker Ziegler
+              </Text>,
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "color": "#6C7680",
+                    "fontSize": 18,
+                  }
+                }
+              >
+                parkerziegler
+              </Text>,
+            ],
+            "style": Object {},
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "accessible": true,
+                "allowFontScaling": true,
+                "children": "Parker Ziegler",
+                "ellipsizeMode": "tail",
+                "style": Object {
+                  "color": "#000",
+                  "fontSize": 22,
+                  "fontWeight": "700",
+                },
+              },
+              "ref": null,
+              "rendered": "Parker Ziegler",
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "accessible": true,
+                "allowFontScaling": true,
+                "children": "parkerziegler",
+                "ellipsizeMode": "tail",
+                "style": Object {
+                  "color": "#6C7680",
+                  "fontSize": 18,
+                },
+              },
+              "ref": null,
+              "rendered": "parkerziegler",
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`<RepositoryOwner /> renders correctly with optional props 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <RepositoryOwner
+    avatarUrl="mock"
+    containerStyle={
+      Object {
+        "margin": "0 auto",
+      }
+    }
+    flexDirection="row"
+    height={60}
+    infoContainerStyle={
+      Object {
+        "alignItems": "flex-end",
+      }
+    }
+    login="parkerziegler"
+    name="Parker Ziegler"
+    onAvatarPress={[MockFunction]}
+    width={60}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <Avatar
+          containerStyle={
+            Object {
+              "margin": "0 auto",
+            }
+          }
+          editButton={
+            Object {
+              "iconColor": "#fff",
+              "iconName": "mode-edit",
+              "iconType": "material",
+              "size": null,
+              "style": null,
+              "underlayColor": "#000",
+            }
+          }
+          height={60}
+          onEditPress={null}
+          onPress={[MockFunction]}
+          rounded={true}
+          showEditButton={false}
+          source={
+            Object {
+              "uri": "mock",
+            }
+          }
+          width={60}
+        />,
+        <View
+          style={
+            Object {
+              "alignItems": "flex-end",
+            }
+          }
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#000",
+                "fontSize": 22,
+                "fontWeight": "700",
+              }
+            }
+          >
+            Parker Ziegler
+          </Text>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#6C7680",
+                "fontSize": 18,
+              }
+            }
+          >
+            parkerziegler
+          </Text>
+        </View>,
+      ],
+      "style": Array [
+        Object {
+          "alignItems": "center",
+          "display": "flex",
+          "marginBottom": 10,
+        },
+        Object {
+          "flexDirection": "row",
+        },
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "containerStyle": Object {
+            "margin": "0 auto",
+          },
+          "editButton": Object {
+            "iconColor": "#fff",
+            "iconName": "mode-edit",
+            "iconType": "material",
+            "size": null,
+            "style": null,
+            "underlayColor": "#000",
+          },
+          "height": 60,
+          "onEditPress": null,
+          "onPress": [MockFunction],
+          "rounded": true,
+          "showEditButton": false,
+          "source": Object {
+            "uri": "mock",
+          },
+          "width": 60,
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Object {
+                  "color": "#000",
+                  "fontSize": 22,
+                  "fontWeight": "700",
+                }
+              }
+            >
+              Parker Ziegler
+            </Text>,
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Object {
+                  "color": "#6C7680",
+                  "fontSize": 18,
+                }
+              }
+            >
+              parkerziegler
+            </Text>,
+          ],
+          "style": Object {
+            "alignItems": "flex-end",
+          },
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "accessible": true,
+              "allowFontScaling": true,
+              "children": "Parker Ziegler",
+              "ellipsizeMode": "tail",
+              "style": Object {
+                "color": "#000",
+                "fontSize": 22,
+                "fontWeight": "700",
+              },
+            },
+            "ref": null,
+            "rendered": "Parker Ziegler",
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "accessible": true,
+              "allowFontScaling": true,
+              "children": "parkerziegler",
+              "ellipsizeMode": "tail",
+              "style": Object {
+                "color": "#6C7680",
+                "fontSize": 18,
+              },
+            },
+            "ref": null,
+            "rendered": "parkerziegler",
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <Avatar
+            containerStyle={
+              Object {
+                "margin": "0 auto",
+              }
+            }
+            editButton={
+              Object {
+                "iconColor": "#fff",
+                "iconName": "mode-edit",
+                "iconType": "material",
+                "size": null,
+                "style": null,
+                "underlayColor": "#000",
+              }
+            }
+            height={60}
+            onEditPress={null}
+            onPress={[MockFunction]}
+            rounded={true}
+            showEditButton={false}
+            source={
+              Object {
+                "uri": "mock",
+              }
+            }
+            width={60}
+          />,
+          <View
+            style={
+              Object {
+                "alignItems": "flex-end",
+              }
+            }
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Object {
+                  "color": "#000",
+                  "fontSize": 22,
+                  "fontWeight": "700",
+                }
+              }
+            >
+              Parker Ziegler
+            </Text>
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Object {
+                  "color": "#6C7680",
+                  "fontSize": 18,
+                }
+              }
+            >
+              parkerziegler
+            </Text>
+          </View>,
+        ],
+        "style": Array [
+          Object {
+            "alignItems": "center",
+            "display": "flex",
+            "marginBottom": 10,
+          },
+          Object {
+            "flexDirection": "row",
+          },
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "containerStyle": Object {
+              "margin": "0 auto",
+            },
+            "editButton": Object {
+              "iconColor": "#fff",
+              "iconName": "mode-edit",
+              "iconType": "material",
+              "size": null,
+              "style": null,
+              "underlayColor": "#000",
+            },
+            "height": 60,
+            "onEditPress": null,
+            "onPress": [MockFunction],
+            "rounded": true,
+            "showEditButton": false,
+            "source": Object {
+              "uri": "mock",
+            },
+            "width": 60,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "color": "#000",
+                    "fontSize": 22,
+                    "fontWeight": "700",
+                  }
+                }
+              >
+                Parker Ziegler
+              </Text>,
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "color": "#6C7680",
+                    "fontSize": 18,
+                  }
+                }
+              >
+                parkerziegler
+              </Text>,
+            ],
+            "style": Object {
+              "alignItems": "flex-end",
+            },
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "accessible": true,
+                "allowFontScaling": true,
+                "children": "Parker Ziegler",
+                "ellipsizeMode": "tail",
+                "style": Object {
+                  "color": "#000",
+                  "fontSize": 22,
+                  "fontWeight": "700",
+                },
+              },
+              "ref": null,
+              "rendered": "Parker Ziegler",
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "accessible": true,
+                "allowFontScaling": true,
+                "children": "parkerziegler",
+                "ellipsizeMode": "tail",
+                "style": Object {
+                  "color": "#6C7680",
+                  "fontSize": 18,
+                },
+              },
+              "ref": null,
+              "rendered": "parkerziegler",
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
