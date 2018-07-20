@@ -7,7 +7,7 @@ import { WebBrowser } from 'expo';
 import getSearch from '../../graphql/getSearch';
 import getAuthor from '../../graphql/getAuthor';
 
-const AuthorScreen = props => {
+const AuthorScreen = (props) => {
   const { data } = props;
 
   if (data.loading) {
@@ -29,10 +29,7 @@ const AuthorScreen = props => {
         avatarUrl={data.user.avatarUrl}
         name={data.user.name}
         login={data.user.login}
-        height={100}
-        width={100}
         containerStyle={{ marginBottom: 10 }}
-        flexDirection="column"
         infoContainerStyle={styles.infoContainer}
         onAvatarPress={openProfile}
       />
@@ -52,7 +49,11 @@ const AuthorScreen = props => {
 
 export default compose(
   graphql(getSearch, {
-    props: ({ data: { search: { input } } }) => ({
+    props: ({
+      data: {
+        search: { input },
+      },
+    }) => ({
       input,
     }),
   }),

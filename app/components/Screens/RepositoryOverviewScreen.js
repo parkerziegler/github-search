@@ -11,7 +11,12 @@ import getSearch from '../../graphql/getSearch';
 class RepositoryOverviewScreen extends React.Component {
   onFetchMore = () => {
     const {
-      data: { fetchMore, repositoryOwner: { repositories: { edges } } },
+      data: {
+        fetchMore,
+        repositoryOwner: {
+          repositories: { edges },
+        },
+      },
     } = this.props;
     const cursor = edges[edges.length - 1].cursor;
 
@@ -65,7 +70,6 @@ class RepositoryOverviewScreen extends React.Component {
           login={user.login}
           height={75}
           width={75}
-          containerStyle={null}
           flexDirection="row"
           infoContainerStyle={styles.infoContainer}
           onAvatarPress={() => navigation.navigate('AuthorScreen')}
@@ -82,7 +86,11 @@ class RepositoryOverviewScreen extends React.Component {
 
 export default compose(
   graphql(getSearch, {
-    props: ({ data: { search: { input } } }) => ({
+    props: ({
+      data: {
+        search: { input },
+      },
+    }) => ({
       input,
     }),
   }),
