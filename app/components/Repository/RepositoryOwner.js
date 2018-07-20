@@ -1,39 +1,54 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View, Text, StyleSheet } from 'react-native';
 import { Avatar } from 'react-native-elements';
 
-const RepositoryOwner = props => {
-  const {
-    avatarUrl,
-    name,
-    login,
-    height,
-    width,
-    containerStyle,
-    flexDirection,
-    infoContainerStyle,
-    onAvatarPress,
-  } = props;
-
-  return (
-    <View style={[styles.container, { flexDirection }]}>
-      <Avatar
-        height={height}
-        width={width}
-        rounded
-        source={{ uri: avatarUrl }}
-        containerStyle={containerStyle}
-        onPress={onAvatarPress}
-      />
-      <View style={infoContainerStyle}>
-        <Text style={styles.name}>{name}</Text>
-        <Text style={styles.login}>{login}</Text>
-      </View>
+const RepositoryOwner = ({
+  avatarUrl,
+  name,
+  login,
+  height,
+  width,
+  containerStyle,
+  flexDirection,
+  infoContainerStyle,
+  onAvatarPress,
+}) => (
+  <View style={[styles.container, { flexDirection }]}>
+    <Avatar
+      height={height}
+      width={width}
+      rounded
+      source={{ uri: avatarUrl }}
+      containerStyle={containerStyle}
+      onPress={onAvatarPress}
+    />
+    <View style={infoContainerStyle}>
+      <Text style={styles.name}>{name}</Text>
+      <Text style={styles.login}>{login}</Text>
     </View>
-  );
+  </View>
+);
+
+RepositoryOwner.propTypes = {
+  avatarUrl: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  login: PropTypes.string.isRequired,
+  height: PropTypes.number,
+  width: PropTypes.number,
+  containerStyle: PropTypes.object,
+  flexDirection: PropTypes.oneOf(['row', 'column']),
+  infoContainerStyle: PropTypes.object,
+  onAvatarPress: PropTypes.func.isRequired,
 };
 
-export default RepositoryOwner;
+RepositoryOwner.defaultProps = {
+  containerStyle: {},
+  height: 100,
+  width: 100,
+  flexDirection: 'column',
+  infoContainerStyle: {},
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -57,3 +72,5 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
 });
+
+export default RepositoryOwner;
