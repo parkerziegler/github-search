@@ -43,12 +43,6 @@ ShallowWrapper {
               "maxWidth": "100%",
             }
           }
-          iconRight={
-            Object {
-              "color": "#222",
-              "name": "call-made",
-            }
-          }
           onPress={[Function]}
           small={true}
           textStyle={
@@ -72,8 +66,7 @@ ShallowWrapper {
           style={
             Object {
               "alignSelf": "stretch",
-              "borderTopColor": "#222",
-              "borderTopWidth": 1,
+              "paddingBottom": 5,
               "paddingTop": 3,
             }
           }
@@ -120,10 +113,6 @@ ShallowWrapper {
             "marginRight": 0,
             "maxWidth": "100%",
           },
-          "iconRight": Object {
-            "color": "#222",
-            "name": "call-made",
-          },
           "onPress": [Function],
           "small": true,
           "textStyle": Array [
@@ -169,8 +158,7 @@ ShallowWrapper {
           </Text>,
           "style": Object {
             "alignSelf": "stretch",
-            "borderTopColor": "#222",
-            "borderTopWidth": 1,
+            "paddingBottom": 5,
             "paddingTop": 3,
           },
         },
@@ -225,12 +213,6 @@ ShallowWrapper {
                 "maxWidth": "100%",
               }
             }
-            iconRight={
-              Object {
-                "color": "#222",
-                "name": "call-made",
-              }
-            }
             onPress={[Function]}
             small={true}
             textStyle={
@@ -254,8 +236,7 @@ ShallowWrapper {
             style={
               Object {
                 "alignSelf": "stretch",
-                "borderTopColor": "#222",
-                "borderTopWidth": 1,
+                "paddingBottom": 5,
                 "paddingTop": 3,
               }
             }
@@ -302,10 +283,6 @@ ShallowWrapper {
               "marginRight": 0,
               "maxWidth": "100%",
             },
-            "iconRight": Object {
-              "color": "#222",
-              "name": "call-made",
-            },
             "onPress": [Function],
             "small": true,
             "textStyle": Array [
@@ -351,8 +328,7 @@ ShallowWrapper {
             </Text>,
             "style": Object {
               "alignSelf": "stretch",
-              "borderTopColor": "#222",
-              "borderTopWidth": 1,
+              "paddingBottom": 5,
               "paddingTop": 3,
             },
           },
