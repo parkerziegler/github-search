@@ -1,1 +1,0 @@
-export const TRACK_USER_SEARCH = 'TRACK_USER_SEARCH';
