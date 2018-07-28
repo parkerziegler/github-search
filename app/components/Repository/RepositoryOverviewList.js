@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FlatList } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
 
 // eslint-disable-next-line import/no-named-as-default
 import RepositoryOverview from './RepositoryOverview';
@@ -44,10 +44,20 @@ class RepositoryOverviewList extends React.Component {
         data={repos}
         renderItem={(repo) => this.renderItem(repo)}
         keyExtractor={(item, index) => index}
+        ItemSeparatorComponent={() => <View style={styles.separator} />}
         onEndReached={onEndReached}
       />
     );
   }
 }
+
+const styles = StyleSheet.create({
+  separator: {
+    height: 1,
+    backgroundColor: '#222',
+    flex: 1,
+    flexDirection: 'row',
+  },
+});
 
 export default RepositoryOverviewList;

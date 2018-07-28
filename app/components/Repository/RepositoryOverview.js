@@ -11,7 +11,7 @@ export class RepositoryOverview extends React.Component {
     navigation: PropTypes.object.isRequired,
     handlePress: PropTypes.func.isRequired,
     name: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
+    description: PropTypes.string,
   };
 
   handleTitlePress = () => {
@@ -27,7 +27,6 @@ export class RepositoryOverview extends React.Component {
       <View style={styles.container}>
         <Button
           title={name}
-          iconRight={{ name: 'call-made', color: '#222' }}
           small
           onPress={this.handleTitlePress}
           textStyle={[styles.repoName, styles.fontColor, styles.flexWrap]}
@@ -61,9 +60,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   repoDescriptionContainer: {
-    borderTopColor: '#222',
-    borderTopWidth: 1,
     paddingTop: 3,
+    paddingBottom: 5,
     alignSelf: 'stretch',
   },
   fontColor: {

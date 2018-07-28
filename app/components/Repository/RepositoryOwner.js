@@ -36,9 +36,9 @@ RepositoryOwner.propTypes = {
   login: PropTypes.string.isRequired,
   height: PropTypes.number,
   width: PropTypes.number,
-  containerStyle: PropTypes.object,
+  containerStyle: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
   flexDirection: PropTypes.oneOf(['row', 'column']),
-  infoContainerStyle: PropTypes.object,
+  infoContainerStyle: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
   onAvatarPress: PropTypes.func.isRequired,
 };
 

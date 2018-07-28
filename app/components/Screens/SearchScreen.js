@@ -8,7 +8,6 @@ import {
   Platform,
   Keyboard,
 } from 'react-native';
-import StatusBar from '../../constants/StatusBar';
 import TextInput from '../Primitives/TextInput';
 import { Button } from 'react-native-elements';
 import { graphql, compose } from 'react-apollo';
@@ -24,7 +23,7 @@ class SearchScreen extends React.Component {
     navigation.navigate('RepositoryOverviewScreen', { username: input });
   };
 
-  onChangeText = text => {
+  onChangeText = (text) => {
     const { handleChange } = this.props;
     handleChange(text.trim().toLowerCase());
   };
@@ -34,7 +33,6 @@ class SearchScreen extends React.Component {
 
     return (
       <KeyboardAvoidingView style={styles.container} behavior="padding">
-        <StatusBar />
         <View style={styles.titleContainer}>
           <Image
             style={{ width: 100, height: 40 }}
@@ -67,13 +65,17 @@ class SearchScreen extends React.Component {
 
 export default compose(
   graphql(getSearch, {
-    props: ({ data: { search: { input } } }) => ({
+    props: ({
+      data: {
+        search: { input },
+      },
+    }) => ({
       input,
     }),
   }),
   graphql(trackSearch, {
     props: ({ mutate }) => ({
-      handleChange: input => mutate({ variables: { input } }),
+      handleChange: (input) => mutate({ variables: { input } }),
     }),
   })
 )(SearchScreen);

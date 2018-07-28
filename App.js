@@ -1,4 +1,5 @@
 import React from 'react';
+import { View, Platform } from 'react-native';
 import { ApolloLink } from 'apollo-link';
 import { ApolloClient } from 'apollo-client';
 import { createHttpLink } from 'apollo-link-http';
@@ -6,6 +7,8 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { setContext } from 'apollo-link-context';
 import { withClientState } from 'apollo-link-state';
 import { ApolloProvider } from 'react-apollo';
+import { Constants } from 'expo';
+
 import { token } from './config';
 import RootNavigator from './app/components/Navigation/RootNavigator';
 import searchResolvers from './app/resolvers/searchResolvers';
@@ -42,7 +45,9 @@ export default class App extends React.Component {
   render() {
     return (
       <ApolloProvider client={client}>
-        <RootNavigator />
+        <View style={{ flex: 1, marginTop: Constants.statusBarHeight }}>
+          <RootNavigator />
+        </View>
       </ApolloProvider>
     );
   }
