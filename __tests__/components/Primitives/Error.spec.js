@@ -1,9 +1,9 @@
 import renderer from 'react-test-renderer';
 import React from 'react';
 import { shallow } from 'enzyme';
+import { Button } from 'react-native-elements';
 
 import Error from '../../../app/components/Primitives/Error';
-import { Button } from 'react-native-elements';
 
 describe('<Error />', () => {
   const navigation = {

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   FlatList,
   View,
@@ -10,11 +11,11 @@ import {
 } from 'react-native';
 import { WebBrowser } from 'expo';
 
-const handleOpenCommit = async commitUrl => {
+const handleOpenCommit = async (commitUrl) => {
   await WebBrowser.openBrowserAsync(commitUrl);
 };
 
-const TouchableComponent = ({ children, commitUrl }) =>
+export const TouchableCommit = ({ children, commitUrl }) =>
   Platform.OS === 'ios' ? (
     <TouchableOpacity onPress={() => handleOpenCommit(commitUrl)}>
       {children}
@@ -25,21 +26,42 @@ const TouchableComponent = ({ children, commitUrl }) =>
     </TouchableNativeFeedback>
   );
 
+TouchableCommit.propTypes = {
+  commitUrl: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+};
+
 const CommitHistory = ({ edges }) => (
   <FlatList
     style={{ alignSelf: 'stretch' }}
     data={edges}
-    renderItem={({ item: { node: { message, oid, commitUrl } } }) => (
-      <TouchableComponent commitUrl={commitUrl}>
+    renderItem={({
+      item: {
+        node: { message, oid, commitUrl },
+      },
+    }) => (
+      <TouchableCommit commitUrl={commitUrl}>
         <View key={oid}>
           <Text style={styles.commitId}>{oid.substring(0, 7)}</Text>
           <Text>{message}</Text>
         </View>
-      </TouchableComponent>
+      </TouchableCommit>
     )}
-    keyExtractor={(item, index) => index}
+    keyExtractor={(item) => item.node.oid}
   />
 );
+
+CommitHistory.propTypes = {
+  edges: PropTypes.arrayOf(
+    PropTypes.shape({
+      node: {
+        message: PropTypes.string,
+        oid: PropTypes.string,
+        commitUrl: PropTypes.string,
+      },
+    })
+  ),
+};
 
 export default CommitHistory;
 
