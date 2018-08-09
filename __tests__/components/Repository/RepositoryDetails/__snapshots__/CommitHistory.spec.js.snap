@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CommitHistory /> renders correctly with all required props 1`] = `
+exports[`CommitHistory components <CommitHistory /> renders correctly with all required props 1`] = `
 <RCTScrollView
   data={
     Array [

@@ -54,11 +54,11 @@ const CommitHistory = ({ edges }) => (
 CommitHistory.propTypes = {
   edges: PropTypes.arrayOf(
     PropTypes.shape({
-      node: {
+      node: PropTypes.shape({
         message: PropTypes.string,
         oid: PropTypes.string,
         commitUrl: PropTypes.string,
-      },
+      }),
     })
   ),
 };
