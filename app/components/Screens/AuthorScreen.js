@@ -1,15 +1,18 @@
 import React from 'react';
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 import { graphql, compose } from 'react-apollo';
+import { WebBrowser } from 'expo';
+
 import RepositoryOwner from '../Repository/RepositoryOwner';
 import AuthorOverview from '../Author/AuthorOverview';
-import { WebBrowser } from 'expo';
 import getSearch from '../../graphql/getSearch';
 import getAuthor from '../../graphql/getAuthor';
 
-const AuthorScreen = (props) => {
-  const { data } = props;
+const openProfile = async (data) => {
+  await WebBrowser.openBrowserAsync(data.user.url);
+};
 
+export const AuthorScreen = ({ data }) => {
   if (data.loading) {
     return (
       <View style={styles.container}>
@@ -17,10 +20,6 @@ const AuthorScreen = (props) => {
       </View>
     );
   }
-
-  const openProfile = async () => {
-    await WebBrowser.openBrowserAsync(data.user.url);
-  };
 
   return (
     <View style={styles.container}>
@@ -31,7 +30,7 @@ const AuthorScreen = (props) => {
         login={data.user.login}
         containerStyle={{ marginBottom: 10 }}
         infoContainerStyle={styles.infoContainer}
-        onAvatarPress={openProfile}
+        onAvatarPress={() => openProfile(data)}
       />
       {!!data.user.bio && <Text style={styles.bio}>{data.user.bio}</Text>}
       <AuthorOverview

@@ -1,0 +1,297 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AuthorScreen /> renders information on the GitHub user 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <AuthorScreen
+    data={
+      Object {
+        "user": Object {
+          "avatarUrl": "https://github.com/parkerziegler/avatar.png",
+          "bio": "Software Engineer @Formidable Labs",
+          "company": "Formidable Labs",
+          "followers": Object {
+            "totalCount": 41,
+          },
+          "location": "Seattle, WA",
+          "login": "parkerziegler",
+          "name": "Parker Ziegler",
+          "organizations": Object {
+            "edges": Array [],
+          },
+          "repositories": Object {
+            "totalCount": 25,
+          },
+          "url": "https://github.com/parkerziegler",
+          "websiteUrl": "https://parkerziegler.com",
+        },
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <RepositoryOwner
+          avatarUrl="https://github.com/parkerziegler/avatar.png"
+          containerStyle={
+            Object {
+              "marginBottom": 10,
+            }
+          }
+          flexDirection="column"
+          height={100}
+          infoContainerStyle={
+            Object {
+              "alignItems": "center",
+              "marginBottom": 20,
+            }
+          }
+          login="parkerziegler"
+          name="Parker Ziegler"
+          onAvatarPress={[Function]}
+          url="https://github.com/parkerziegler"
+          width={100}
+        />,
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "color": "#000",
+              "fontSize": 18,
+              "marginBottom": 20,
+            }
+          }
+        >
+          Software Engineer @Formidable Labs
+        </Text>,
+        <AuthorOverview
+          company="Formidable Labs"
+          followerCount={41}
+          location="Seattle, WA"
+          organizations={Array []}
+          repoCount={25}
+          url="https://github.com/parkerziegler"
+          websiteUrl="https://parkerziegler.com"
+        />,
+      ],
+      "style": Object {
+        "backgroundColor": "#fff",
+        "flex": 1,
+        "justifyContent": "space-around",
+        "padding": 20,
+      },
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "avatarUrl": "https://github.com/parkerziegler/avatar.png",
+          "containerStyle": Object {
+            "marginBottom": 10,
+          },
+          "flexDirection": "column",
+          "height": 100,
+          "infoContainerStyle": Object {
+            "alignItems": "center",
+            "marginBottom": 20,
+          },
+          "login": "parkerziegler",
+          "name": "Parker Ziegler",
+          "onAvatarPress": [Function],
+          "url": "https://github.com/parkerziegler",
+          "width": 100,
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "accessible": true,
+          "allowFontScaling": true,
+          "children": "Software Engineer @Formidable Labs",
+          "ellipsizeMode": "tail",
+          "style": Object {
+            "color": "#000",
+            "fontSize": 18,
+            "marginBottom": 20,
+          },
+        },
+        "ref": null,
+        "rendered": "Software Engineer @Formidable Labs",
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "company": "Formidable Labs",
+          "followerCount": 41,
+          "location": "Seattle, WA",
+          "organizations": Array [],
+          "repoCount": 25,
+          "url": "https://github.com/parkerziegler",
+          "websiteUrl": "https://parkerziegler.com",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <RepositoryOwner
+            avatarUrl="https://github.com/parkerziegler/avatar.png"
+            containerStyle={
+              Object {
+                "marginBottom": 10,
+              }
+            }
+            flexDirection="column"
+            height={100}
+            infoContainerStyle={
+              Object {
+                "alignItems": "center",
+                "marginBottom": 20,
+              }
+            }
+            login="parkerziegler"
+            name="Parker Ziegler"
+            onAvatarPress={[Function]}
+            url="https://github.com/parkerziegler"
+            width={100}
+          />,
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#000",
+                "fontSize": 18,
+                "marginBottom": 20,
+              }
+            }
+          >
+            Software Engineer @Formidable Labs
+          </Text>,
+          <AuthorOverview
+            company="Formidable Labs"
+            followerCount={41}
+            location="Seattle, WA"
+            organizations={Array []}
+            repoCount={25}
+            url="https://github.com/parkerziegler"
+            websiteUrl="https://parkerziegler.com"
+          />,
+        ],
+        "style": Object {
+          "backgroundColor": "#fff",
+          "flex": 1,
+          "justifyContent": "space-around",
+          "padding": 20,
+        },
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "avatarUrl": "https://github.com/parkerziegler/avatar.png",
+            "containerStyle": Object {
+              "marginBottom": 10,
+            },
+            "flexDirection": "column",
+            "height": 100,
+            "infoContainerStyle": Object {
+              "alignItems": "center",
+              "marginBottom": 20,
+            },
+            "login": "parkerziegler",
+            "name": "Parker Ziegler",
+            "onAvatarPress": [Function],
+            "url": "https://github.com/parkerziegler",
+            "width": 100,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "accessible": true,
+            "allowFontScaling": true,
+            "children": "Software Engineer @Formidable Labs",
+            "ellipsizeMode": "tail",
+            "style": Object {
+              "color": "#000",
+              "fontSize": 18,
+              "marginBottom": 20,
+            },
+          },
+          "ref": null,
+          "rendered": "Software Engineer @Formidable Labs",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "company": "Formidable Labs",
+            "followerCount": 41,
+            "location": "Seattle, WA",
+            "organizations": Array [],
+            "repoCount": 25,
+            "url": "https://github.com/parkerziegler",
+            "websiteUrl": "https://parkerziegler.com",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
